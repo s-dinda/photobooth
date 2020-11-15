@@ -13,12 +13,19 @@
   - XL = max 2500px
 - Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
 
+**Breaking changes**
+- config: move preview options to it's own settings menu
+  - also use a select box to choose a preview mode:  
+    Options "See preview by device cam" *($config['previewFromCam'])* and "Preview from URL" *($config['previewFromIPCam'])* have been replaced by a select box *($config['preview_mode'])*.
+
 **General**
 - Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
 - install-raspbian: Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes [#128](https://github.com/andi34/photobooth/pull/128):
 - Admin panel option to hide / show panel headings by Operating System
 - Error handling:
   - api (applyEffects): check if GD library is loaded
+- Add Italian to supported languages
+- Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
 
 #### 2.10.0
 **Bugfixes**
