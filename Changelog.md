@@ -13,6 +13,7 @@
   - XL = max 2500px
 - Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
 - live preview from gphoto2 [#131](https://github.com/andi34/photobooth/pull/131)
+- feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
 
 **Breaking changes**
 - config: move preview options to it's own settings menu
@@ -27,6 +28,7 @@
   - api (applyEffects): check if GD library is loaded
 - Add Italian to supported languages
 - Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
+- Switch to modern styling by default
 
 #### 2.10.0
 **Bugfixes**

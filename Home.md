@@ -31,6 +31,7 @@ A Photobooth webinterface for Raspberry Pi and Windows.
 * **Q:** [I've a white page after updating to latest Source, how can I solve this?](FAQ#ive-a-white-page-after-updating-to-latest-source-how-can-i-solve-this)
 * **Q:** [How do I change the configuration?](FAQ#how-do-i-change-the-configuration)
 * **Q:** [How to change the language?](FAQ#how-do-i-change-the-configuration)
+* **Q:** [How to change the look of my Photobooth?](FAQ#how-to-change-the-look-of-my-photobooth)
 * **Q:** [How to keep pictures on my Camera using gphoto2?](FAQ#how-to-keep-pictures-on-my-camera-using-gphoto2)
 * **Q:** [Cromakeying is saving without finishing saving](FAQ#cromakeying-is-saving-without-finishing-saving)
 * **Q:** [Can I use Hardware Button to take a Picture on my Raspberry Pi?](FAQ#can-i-use-hardware-button-to-take-a-picture-on-my-raspberry-pi)
