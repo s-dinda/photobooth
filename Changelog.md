@@ -3,6 +3,7 @@
 #### Upcoming release
 **Bugfixes**
 - chromakeying: respect thumnail config
+- delete: fix removing deleted images from database
 
 **New Options**
 - feature (standalone gallery): continous check for new pictures [#121](https://github.com/andi34/photobooth/pull/121)
@@ -14,6 +15,7 @@
 - Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
 - live preview from gphoto2 [#131](https://github.com/andi34/photobooth/pull/131)
 - feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
+- feature: Allow syncing of new pictures to USB device using rsync [#158](https://github.com/andi34/photobooth/pull/158)
 
 **Breaking changes**
 - config: move preview options to it's own settings menu
@@ -29,6 +31,7 @@
 - Add Italian to supported languages
 - Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
 - Switch to modern styling by default
+- Add prettier-php plugin (and slightly adjust prettier config for php files) to force one codestyle [#124](https://github.com/andi34/photobooth/pull/124)
 
 #### 2.10.0
 **Bugfixes**
