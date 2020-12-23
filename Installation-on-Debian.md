@@ -157,7 +157,7 @@ sudo service lighttpd force-reload
 
 ### Install dependencies
 ```
-sudo apt install -y git php-gd php-zip gphoto2 libimage-exiftool-perl nodejs
+sudo apt install -y git php-gd php-zip gphoto2 libimage-exiftool-perl nodejs rsync udisks2
 ```
 
 To install all client dependencies you also have to [install yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable):
