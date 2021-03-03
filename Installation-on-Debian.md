@@ -1,7 +1,7 @@
-## Installation on Raspberry Pi OS (previously called Raspbian):
-To make the installation as simple as possible, we have created an installation script for you. It will setup your Raspberry Pi (using Apache Webserver) as a full blown Photobooth. This means, Photobooth and all needed packages and dependencies get installed and the automatic camera mount is disabled. On request you can setup that Photobooth is started in fullscreen on startup.
+## Automated installation on Raspberry Pi OS (previously called Raspbian) and on Debian / Debian based distributions:
+To make the installation as simple as possible, we have created an installation script for you. It will setup your Raspberry Pi, Computer or Laptop as a full blown Photobooth (using Apache Webserver). This means, Photobooth and all needed packages and dependencies get installed and the automatic camera mount is disabled. On a Raspberry Pi you can choose that Photobooth is started in fullscreen on startup.
 
-If you encounter any issues or want more freedom to configure your Pi, we recommend you look at the detailed installation instruction below.
+If you encounter any issues or want more freedom to configure your Pi, Computer or Laptop, we recommend you look at the detailed installation instruction below.
 
 ```
 wget https://raw.githubusercontent.com/andi34/photobooth/dev/install-raspbian.sh
@@ -12,8 +12,8 @@ To use NGINX run `sudo bash install-raspbian.sh nginx` (additional Setup note: [
 To use Lighttpd as Webserver run `sudo bash install-raspbian.sh lighttpd`.
 
 
-## Installation on Debian / Debian based distributions:
-The steps below were tested on "Raspberry Pi OS (previously called Raspbian) with desktop" based on Debian Buster, but should work for Debian and all Debian based distributions. Photobooth can also be used on any other PC/Laptop running a supported OS.
+## Manually install Photobooth on Raspberry Pi OS (previously called Raspbian) and on Debian / Debian based distributions:
+The steps below were tested on "Raspberry Pi OS with desktop" based on Debian Buster, but should work for Debian and all Debian based distributions. Photobooth can also be used on any other PC/Laptop running a supported OS.
 
 ### Update your system
 ```
