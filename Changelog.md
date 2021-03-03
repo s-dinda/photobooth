@@ -1,9 +1,16 @@
 ### Changelog
 
-#### Upcoming release
+#### Upcoming Photobooth v3 release
+**Breaking changes**
+- The configuration setup has changed completely on Photobooth v3 and some config options have been removed!
+  **Please note:** Your old config (Photobooth v2.x and older) won't work, you have to setup your configuration via [adminpanel](http://localhost/admin) again!
+
 **Bugfixes**
 - chromakeying: respect thumnail config
-- delete: fix removing deleted images from database
+- delete: fix removing deleted images from database 
+- fix translation fallback on all *.js files
+- fix small bug for mail subject and text templates to be applied
+- adjust default background URL setup to fix backgrounds on iOS (don't use relative path)
 
 **New Options**
 - feature (standalone gallery): continous check for new pictures [#121](https://github.com/andi34/photobooth/pull/121)
@@ -16,22 +23,41 @@
 - live preview from gphoto2 [#131](https://github.com/andi34/photobooth/pull/131)
 - feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
 - feature: Allow syncing of new pictures to USB device using rsync [#158](https://github.com/andi34/photobooth/pull/158)
-
-**Breaking changes**
-- config: move preview options to it's own settings menu
-  - also use a select box to choose a preview mode:  
-    Options "See preview by device cam" *($config['previewFromCam'])* and "Preview from URL" *($config['previewFromIPCam'])* have been replaced by a select box *($config['preview_mode'])*.
+- Options "See preview by device cam" and "Preview from URL" have been replaced by a select menu
+- allow to hide decore lines on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
+- allow to hide title and subtitle on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
+- allow to access login-protected pages without login on localhost access
+- Collage:
+  - remove use of background images, user should apply frames instead
+  - new collage layouts: 1+3, 1+3 (2), 1+2 & 2x2 (2)
+  - test your collage settings accessing [localhost/test/collage.php](http://localhost/test/collage.php)
+  - allow to deactivate standalone picture [Fix #155](https://github.com/andi34/photobooth/issues/155)
 
 **General**
-- Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
-- install-raspbian: Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes [#128](https://github.com/andi34/photobooth/pull/128):
+- New adminpanel [#162](https://github.com/andi34/photobooth/pull/162)
 - Admin panel option to hide / show panel headings by Operating System
+- Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
+- install-raspbian.sh script:
+  - Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes
+  - allow to install from all devices running debian/debian based OS  [#181](https://github.com/andi34/photobooth/pull/181)
 - Error handling:
   - api (applyEffects): check if GD library is loaded
+  - check if frames and font are valid
 - Add Italian to supported languages
 - Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
 - Switch to modern styling by default
 - Add prettier-php plugin (and slightly adjust prettier config for php files) to force one codestyle [#124](https://github.com/andi34/photobooth/pull/124)
+- Collage:
+  - Rotate collage images and final collage if needed (Fix [#156](https://github.com/andi34/photobooth/issues/156))  [#63](https://github.com/andi34/photobooth/pull/63)
+  - Allow to retake a single picture on collage with interruption (Fix [#166](https://github.com/andi34/photobooth/issues/166))
+- Remotebuzzer:
+  - replace gpio by onoff library
+  - Add additional button support for collage and shutdown
+- don't use relative paths for font, frames and background images
+- folders are always part of data folder (besides data folder itself and archives folder)
+  - e.g. images folder config before: `data/images`
+    now: `images` (this will also point to `data/images`)
+- use 100% picture quality while processing images to not lower given configured jpeg quality for the final image
 
 #### 2.10.0
 **Bugfixes**
