@@ -1,40 +1,80 @@
 ### Changelog
 
 #### Upcoming Photobooth v3 release
+
+A lot of changes have been applied to Photobooth! We're proud to tell that some bugs have been fixed and a lot of user wishes could be realized!  
+We have added a lot of new options to make Photobooth adjustable for much more use cases.  
+A big thanks goes to [jacques42@GitHub](https://github.com/jacques42) (who was involved a lot for this upcoming Release) and everyone who helped on making Photobooth this powerfull!  
+Photobooth UI has changed to a modern look on most pages and our Admin panel and confuguration setup has changed completely (please read the following Changelog).  
+
+To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
+An updated FAQ can be found at [localhost/faq](http://localhost/faq).  
+
 **Breaking changes**
 - The configuration setup has changed completely on Photobooth v3 and some config options have been removed!
   **Please note:** Your old config (Photobooth v2.x and older) won't work, you have to setup your configuration via [adminpanel](http://localhost/admin) again!
 
 **Bugfixes**
-- chromakeying: respect thumnail config
-- delete: fix removing deleted images from database 
-- fix translation fallback on all *.js files
-- fix small bug for mail subject and text templates to be applied
-- adjust default background URL setup to fix backgrounds on iOS (don't use relative path)
+- Chromakeying:
+  - respect thumnail config
+- Delete:
+  - fix removing deleted images from database
+- Translations:
+  - fix translation fallback on all *.js files
+- E-Mail:
+  - fix small bug for mail subject and text templates to be applied
+- Compatibility:
+  - adjust default background URL setup to fix backgrounds on iOS (don't use relative path)
+  - qr: also display correct url on subfolder installation [Fix #204](https://github.com/andi34/photobooth/issues/204)
 
 **New Options**
-- feature (standalone gallery): continous check for new pictures [#121](https://github.com/andi34/photobooth/pull/121)
-- Make imagesize for chromakeying adjustable
-  - S = max 1000px
-  - M = max 1500px (default like before)
-  - L = max 2000px
-  - XL = max 2500px
-- Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
-- live preview from gphoto2 [#131](https://github.com/andi34/photobooth/pull/131)
-- feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
-- feature: Allow syncing of new pictures to USB device using rsync [#158](https://github.com/andi34/photobooth/pull/158)
-- Options "See preview by device cam" and "Preview from URL" have been replaced by a select menu
-- allow to hide decore lines on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
-- allow to hide title and subtitle on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
-- allow to access login-protected pages without login on localhost access
+- Standalone gallery:
+  - continous check for new pictures [#121](https://github.com/andi34/photobooth/pull/121)
 - Collage:
-  - remove use of background images, user should apply frames instead
-  - new collage layouts: 1+3, 1+3 (2), 1+2 & 2x2 (2)
-  - test your collage settings accessing [localhost/test/collage.php](http://localhost/test/collage.php)
   - allow to deactivate standalone picture [Fix #155](https://github.com/andi34/photobooth/issues/155)
+  - new collage layouts: 1+3, 1+3 (2), 1+2 & 2x2 (2)
+  - remove use of background images, user should apply frames instead
+  - test your collage settings accessing [localhost/test/collage.php](http://localhost/test/collage.php)
+  - Make imagesize for chromakeying adjustable
+    - S = max 1000px
+    - M = max 1500px (default like before)
+    - L = max 2000px
+    - XL = max 2500px
+- Chroma keying:
+  - Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
+  - Seriously.js: use color picker to define keyed color, use Seriously.js by default [#213](https://github.com/andi34/photobooth/pull/213)
+  - allow to define background path used for chroma keying, place your own backgrounds inside a subfolder of your Photobooth, e.g. inside `private/backgrounds` and define it via admin panel
+  - added "live chroma keying" (choose a background -> take a picture -> get the keyed image with choosen background), access via [http://localhost/livechroma.php](http://localhost/livechroma.php) or use the config option to use it as default start page [#157](https://github.com/andi34/photobooth/pull/157)
+- Userinterface:
+  - feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
+  - allow to hide decore lines on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
+  - allow to hide title and subtitle on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
+- Backup:
+  - Allow syncing of new pictures to USB device using rsync [#158](https://github.com/andi34/photobooth/pull/158)
+- Preview:
+  - Options "See preview by device cam" and "Preview from URL" have been replaced by a select menu
+  - live preview from gphoto2 [#131](https://github.com/andi34/photobooth/pull/131)
+- Athentication:
+  - allow to protect FAQ and manual [#212](https://github.com/andi34/photobooth/pull/212)
+  - allow to access login-protected pages without login on localhost access
+- Database:
+  - make database optional, add button to (re)generate database to admin panel [#203](https://github.com/andi34/photobooth/pull/203)
+- Remote buzzer:
+  - Add rotary switch support [#202](https://github.com/andi34/photobooth/pull/202)
+- What else:
+  - allow delete of images without request [#215](https://github.com/andi34/photobooth/pull/215)
+  - allow to take pictures right after the countdown, "Cheese" will be skipped [#129](https://github.com/andi34/photobooth/pull/129)
+  - allow to flip image after taken [#209](https://github.com/andi34/photobooth/pull/209)
+  - allow to add text to picture and/or collage [#210](https://github.com/andi34/photobooth/pull/210)
 
 **General**
+- Switch to modern styling by default
 - New adminpanel [#162](https://github.com/andi34/photobooth/pull/162)
+  - new design
+  - choose between `Basic View`, `Advanced View` and `Expert View`:
+    - Basic View: Show config elements relevant for most simple and most common use-case. Default settings are largely sufficient. Maybe 20-30 % of all config options. The focus are entry-level user, who start to get their feet wet.
+    - Advanced View: Features and elements used more often - i.e. Printing, Frames for Pictures, Chroma-Keying, etc. - maybe around 50% of all options on top. This should be sufficient for most of the users.
+    - Expert View: Dev-Setting, Data folders, Commands, etc. - the remaining 20-30% of options are mapped to this view. Geeks right here.
 - Admin panel option to hide / show panel headings by Operating System
 - Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
 - install-raspbian.sh script:
@@ -45,19 +85,19 @@
   - check if frames and font are valid
 - Add Italian to supported languages
 - Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
-- Switch to modern styling by default
 - Add prettier-php plugin (and slightly adjust prettier config for php files) to force one codestyle [#124](https://github.com/andi34/photobooth/pull/124)
 - Collage:
   - Rotate collage images and final collage if needed (Fix [#156](https://github.com/andi34/photobooth/issues/156))  [#63](https://github.com/andi34/photobooth/pull/63)
   - Allow to retake a single picture on collage with interruption (Fix [#166](https://github.com/andi34/photobooth/issues/166))
-- Remotebuzzer:
+- Remotebuzzer [#201](https://github.com/andi34/photobooth/pull/201), [#202](https://github.com/andi34/photobooth/pull/202):
   - replace gpio by onoff library
-  - Add additional button support for collage and shutdown
+  - Add additional button support for collage, print and shutdown
 - don't use relative paths for font, frames and background images
 - folders are always part of data folder (besides data folder itself and archives folder)
-  - e.g. images folder config before: `data/images`
+  - e.g. images folder config before: `data/images`  
     now: `images` (this will also point to `data/images`)
 - use 100% picture quality while processing images to not lower given configured jpeg quality for the final image
+- handle login check earlier to protect other api endpoints [#205](https://github.com/andi34/photobooth/pull/205)
 
 #### 2.10.0
 **Bugfixes**
