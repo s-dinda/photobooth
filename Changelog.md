@@ -7,10 +7,12 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 - _nothing for now_
 
+<hr>
+
 #### 3.0.0
 A lot of changes have been applied to Photobooth! We're proud to tell that some bugs have been fixed and a lot of user wishes could be realized!  
 We have added a lot of new options to make Photobooth adjustable for much more use cases.  
-A big thanks goes to [jacques42@GitHub](https://github.com/jacques42) (who was involved a lot for this upcoming Release) and everyone who helped on making Photobooth this powerfull!  
+A big thanks goes to [jacques42@GitHub](https://github.com/jacques42) (who was involved a lot for this Release) and everyone who helped on making Photobooth this powerfull!  
 Photobooth UI has changed to a modern look on most pages and our Admin panel and configuration setup has changed completely (please read the following Changelog).  
 
 **Breaking changes**
@@ -38,16 +40,16 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
   - new collage layouts: 1+3, 1+3 (2), 1+2 & 2x2 (2)
   - remove use of background images, user should apply frames instead
   - test your collage settings accessing [localhost/test/collage.php](http://localhost/test/collage.php)
-  - Make imagesize for chromakeying adjustable
-    - S = max 1000px
-    - M = max 1500px (default like before)
-    - L = max 2000px
-    - XL = max 2500px
 - Chroma keying:
   - Allow to switch between MarvinJ and Seriously.js algorithm for chroma keying [#123](https://github.com/andi34/photobooth/pull/123)
   - Seriously.js: use color picker to define keyed color, use Seriously.js by default [#213](https://github.com/andi34/photobooth/pull/213)
   - allow to define background path used for chroma keying, place your own backgrounds inside a subfolder of your Photobooth, e.g. inside `private/backgrounds` and define it via admin panel
   - added "live chroma keying" (choose a background -> take a picture -> get the keyed image with choosen background), access via [http://localhost/livechroma.php](http://localhost/livechroma.php) or use the config option to use it as default start page [#157](https://github.com/andi34/photobooth/pull/157)
+  - Make imagesize for chromakeying adjustable
+    - S = max 1000px
+    - M = max 1500px (default like before)
+    - L = max 2000px
+    - XL = max 2500px
 - Userinterface:
   - feature: Allow custom index, add new index layout by Mathias Fiege [#159](https://github.com/andi34/photobooth/pull/159)
   - allow to hide decore lines on start screen [Partially #165](https://github.com/andi34/photobooth/pull/165)
@@ -108,6 +110,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Authentication:
   - handle login check earlier to protect other api endpoints [#205](https://github.com/andi34/photobooth/pull/205)
 
+<hr>
+
 #### 2.10.0
 **Bugfixes**
 - check if we're already printing to avoid double printing
@@ -139,6 +143,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - reordered folder setup
 - Crowdin translation import
 - add Polish to supported languages
+
+<hr>
 
 #### 2.9.0
 **Bugfixes**
@@ -188,6 +194,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - github: add pull request template
 - github: don't allow empty issues, emojis to issue template names
 
+<hr>
+
 #### 2.8.0
 **Bugfixes**
 - fix install-raspbian.sh
@@ -213,6 +221,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
   - javascript transpiled to es5 to support older browsers (e.g. Safari 9)
   - use "whatwg-fetch" polyfill which should enable Safari 9 to use simple translator
 
+<hr>
+
 #### 2.7.2
 **Bugfixes**
 - use htmlentities on input type configuration (allows to load config containing quotes)
@@ -228,6 +238,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Show date below pictures inside Gallery by default
 - Disable Chromakeying by default
 
+<hr>
+
 #### 2.7.1
 **Bugfixes**
 - Fix taking photo collage
@@ -235,11 +247,15 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 **General changes**
 - simple-translator updated to v1.2.0
 
+<hr>
+
 #### 2.7.0
 **New options**
 - Add option to use numbered image names
 - Allow to change picture permissons while taking a photo
   - usefully if you e.g. like to delete pictures as different user
+
+<hr>
 
 **General changes**
 - Add database name to picture name if database changed from default name
@@ -252,15 +268,21 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Fix loading language resources
 - Only take Photos if we aren't already
 
+<hr>
+
 #### 2.6.1
 **Bugfixes**
 - Fix video--sensor canvas
 - Update Style for 5inch Display (800x480px)
 - Attempt to fix taking Pictures and Collage via defined keys
 
+<hr>
+
 **General changes**
 - Add offline FAQ, access directly via [http://localhost/manual/faq.html](http://localhost/manual/faq.html)
 - Update jQuery to v3.5.1
+
+<hr>
 
 #### 2.6.0
 **New options**
@@ -272,6 +294,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 
 **General changes**
 - update PHPMailer to latest version
+
+<hr>
 
 #### 2.5.0
 **New options**
@@ -285,6 +309,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - install-raspbian: install recommended via git (easier update of Photobooth)
 - mention personal fork additions inside README
 
+<hr>
+
 #### 2.4.0
 **New Options**
 - offline manual with settings explained under [localhost/manual](http://localhost/manual) (https://github.com/andi34/photobooth/pull/59)
@@ -292,6 +318,7 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - event specific database: You can now rename the picture and email database via Adminpanel. Only pictures inside the defined database are visible via gallery. (https://github.com/andi34/photobooth/pull/61)
 - Preview/Stream from device cam as background on start page (https://github.com/andi34/photobooth/pull/58)
 
+<hr>
 
 #### 2.3.3
 **Bugfixes**
@@ -302,6 +329,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Remove focus on "New Picture" and "New Collage" buttons
 - update-booth.sh: delete old files if exist
 - result screen: don't reload page after print
+
+<hr>
 
 #### 2.3.2
 **Bugfixes**
@@ -318,6 +347,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Down-sized QR code
 - adjust countdown and cheese colors for default blue-gray theme
 
+<hr>
+
 #### 2.3.1
 **Bugfixes**
 - Fix loading language files if Photobooth is installed in a subfolder
@@ -325,6 +356,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 **General changes**
 - add license files for node modules on packed builds
 - Installer: Allow using latest prebuild package again
+
+<hr>
 
 #### 2.3.0
 **General changes**
@@ -338,6 +371,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 **Bugfixes**
 - Fix placeholder for preview from stream URL
 
+<hr>
+
 #### 2.2.1
 **New Options**
 - Allow to rotate photo after taking
@@ -347,6 +382,8 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Remove unused resources/fonts/style.css
 - language: use correkt ISO 639-1 Language Code for Greek
 - Optimize picture size on result screen
+
+<hr>
 
 #### 2.2.0
 **General changes**
@@ -367,6 +404,7 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Adjustable time a image is shown after capture
 - Optional EXIF data preservation (disabled by default)
 
+<hr>
 
 #### 2.1.0
 **Optimize performance:**
@@ -419,79 +457,129 @@ Photobooth UI has changed to a modern look on most pages and our Admin panel and
 - Display collage count before taking photo
 - Handle take photo error cases
 
+<hr>
+
 #### 2.0.2:
 - fix saving of chroma keying results, style for chroma keying, style of gallery caption, datetime string on images without date info
 
+<hr>
+
 #### 2.0.1:
 - fix deletion of db file, fix config changes via admin settings
+
+<hr>
 
 #### 2.0.0:
 - Overhaul: reorganized all source files, completely overhaul coding
 - New features: gallery standalone (localhost/gallery.php), add button to delete the picture after it was taken and displayed on the screen, change style via admin panel, add trigger keys via config, add option to force the use of a buzzer, add option to enable CUPS button, add option to resize and crop image by center at print, use same printing settings/options for chromakeying as for normal prints, take pictures for collage one after the other with or without interruption, add version checker to admin page, add greek, add option to specify data folder
 - Some more bugfixes and improvements as usually
 
+<hr>
+
 #### 1.9.0:
 - Responsive Layout. Use relative paths to allow running Photobooth in a subfolder. Fix config.json being ignored on chromakeying. Adjustments on blue-gray theme. Some more small adjustments and bugfixes.
+
+<hr>
 
 #### 1.8.3:
 - Adjust scrollbar config and add blue-gray scrollbar theme, allow using Pi Cam for preview and to take pictures, add hidden shortcut for admin settings, add polaroid effect, add print confirmation dialogue
 
+<hr>
+
 #### 1.8.2:
 - Added spanish as supported language, print text on picture feature, optional blue-gray theme, adjust admin panel. Small bugfixes and improvements as always.
+
+<hr>
 
 #### 1.8.1:
 - Small bugfixes and improvements. New Features: enable/disable printing QR-Code, enable/disable photo collage function, enable/disable printing a frame on your picture
 
+<hr>
+
 #### 1.8.0:
 - Update jQuery, GSAP and PhotoSwipe to latest versions, add chroma keying feature (green screen keying)
+
+<hr>
 
 #### 1.7.0:
 - Add possibillity to choose an image filter before taking a picture
 
+<hr>
+
 #### 1.6.3:
 - Add config and instructions to use a GPIO Button to take a picture (address https://github.com/andreknieriem/photobooth/issues/10), translate sucess and error messages while sending images via mail
+
+<hr>
 
 #### 1.6.2:
 - Add wedding specific config, fix gallery settings not being saved from admin panel
 
+<hr>
+
 #### 1.6.1:
 - Add possibillity to disable mobile view, update Kiosk Mode instruction
+
+<hr>
 
 #### 1.6.0:
 - Button to send image via mail (uses [PHPMailer](https://github.com/PHPMailer/PHPMailer) ), add use of "my.config.inc.php" for personal use to prevent sharing personal data (e.g. E-Mail password and username) on Github by accident
 
+<hr>
+
 #### 1.5.3:
 - Several new options (disable gallery via config, set countdown timer via config, set cheeeese! Timer via config, ability to show the date/time in the caption of the images in the gallery), all config changes now available in admin page, complete french translation, add empty Gallery message, Fullscreen Mode on old iOS-Devices when starting photobooth from homescreen, StartScreen message is an option in config/admin page now, add instructions for Kiosk Mode, should fix #11, and #2, improve instructions in README, some more small Bugfixes and improvements. Merged pull-request #53 which includes updated pull-requests #52 & #54
+
+<hr>
 
 #### 1.5.2:
 - Bugfixing QR-Code from gallery and live-preview position. Merged pull #45
 
+<hr>
+
 #### 1.5.1:
 - Bugfixing
+
+<hr>
 
 #### 1.5.0:
 - Added Options page under /admin. Bugfix for homebtn. Added option for device webcam preview on countdown
 
+<hr>
+
 #### 1.4.0:
 - Merged several pull requests
+
+<hr>
 
 #### 1.3.2:
 - Bugfix for QR Code on result page
 
+<hr>
+
 #### 1.3.1:
 - Merged pull-request #6,#15 and #16
+
+<hr>
 
 #### 1.3.0:
 - Option for QR and Print Butons, code rework, gulp-sass feature enabled
 
+<hr>
+
 #### 1.2.0:
 - Printing feature, code rework, bugfixes
+
+<hr>
 
 #### 1.1.1:
 - Bugix - QR not working on touch devices
 
+<hr>
+
 #### 1.1.0:
 - Added QR Code to Gallery
+
+<hr>
 
 #### 1.0.0:
 - Initial Release
