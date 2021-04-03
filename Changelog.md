@@ -1,18 +1,21 @@
 ### Changelog
 
-#### Upcoming Photobooth v3 release
+#### Upcoming Photobooth release
 
+To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
+An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
+
+- _nothing for now_
+
+#### 3.0.0
 A lot of changes have been applied to Photobooth! We're proud to tell that some bugs have been fixed and a lot of user wishes could be realized!  
 We have added a lot of new options to make Photobooth adjustable for much more use cases.  
 A big thanks goes to [jacques42@GitHub](https://github.com/jacques42) (who was involved a lot for this upcoming Release) and everyone who helped on making Photobooth this powerfull!  
-Photobooth UI has changed to a modern look on most pages and our Admin panel and confuguration setup has changed completely (please read the following Changelog).  
-
-To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
-An updated FAQ can be found at [localhost/faq](http://localhost/faq).  
+Photobooth UI has changed to a modern look on most pages and our Admin panel and configuration setup has changed completely (please read the following Changelog).  
 
 **Breaking changes**
 - The configuration setup has changed completely on Photobooth v3 and some config options have been removed!
-  **Please note:** Your old config (Photobooth v2.x and older) won't work, you have to setup your configuration via [adminpanel](http://localhost/admin) again!
+  **Please note:** Your old config (Photobooth v2.x and older) won't work, **you must** setup your configuration via [adminpanel](http://localhost/admin) again!
 
 **Bugfixes**
 - Chromakeying:
@@ -82,7 +85,7 @@ An updated FAQ can be found at [localhost/faq](http://localhost/faq).
   - Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
   - install-raspbian.sh script:
     - Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes
-    - allow to install from all devices running debian/debian based OS  [#181](https://github.com/andi34/photobooth/pull/181)
+    - allow to install from all devices running debian/debian based OS [#181](https://github.com/andi34/photobooth/pull/181)
 - Error handling:
   - api (applyEffects): check if GD library is loaded
   - check if frames and font are valid
