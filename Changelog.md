@@ -59,8 +59,8 @@ An updated FAQ can be found at [localhost/faq](http://localhost/faq).
   - allow to access login-protected pages without login on localhost access
 - Database:
   - make database optional, add button to (re)generate database to admin panel [#203](https://github.com/andi34/photobooth/pull/203)
-- Remote buzzer:
-  - Add rotary switch support [#202](https://github.com/andi34/photobooth/pull/202)
+- Remotebuzzer:
+  - Add rotary switch support [#202](https://github.com/andi34/photobooth/pull/202), [#221](https://github.com/andi34/photobooth/pull/221)
 - What else:
   - allow delete of images without request [#215](https://github.com/andi34/photobooth/pull/215)
   - allow to take pictures right after the countdown, "Cheese" will be skipped [#129](https://github.com/andi34/photobooth/pull/129)
@@ -68,36 +68,42 @@ An updated FAQ can be found at [localhost/faq](http://localhost/faq).
   - allow to add text to picture and/or collage [#210](https://github.com/andi34/photobooth/pull/210)
 
 **General**
-- Switch to modern styling by default
-- New adminpanel [#162](https://github.com/andi34/photobooth/pull/162)
-  - new design
+- User Interface:
+  - Switch to modern styling by default
+- Adminpanel
+  - new adminpanel design [#162](https://github.com/andi34/photobooth/pull/162)
   - choose between `Basic View`, `Advanced View` and `Expert View`:
     - Basic View: Show config elements relevant for most simple and most common use-case. Default settings are largely sufficient. Maybe 20-30 % of all config options. The focus are entry-level user, who start to get their feet wet.
     - Advanced View: Features and elements used more often - i.e. Printing, Frames for Pictures, Chroma-Keying, etc. - maybe around 50% of all options on top. This should be sufficient for most of the users.
     - Expert View: Dev-Setting, Data folders, Commands, etc. - the remaining 20-30% of options are mapped to this view. Geeks right here.
-- Admin panel option to hide / show panel headings by Operating System
-- Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
-- install-raspbian.sh script:
-  - Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes
-  - allow to install from all devices running debian/debian based OS  [#181](https://github.com/andi34/photobooth/pull/181)
+  - Admin panel option to hide / show panel headings by Operating System
+  - Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
+- Installation:
+  - Installation [Instructions for Windows](https://github.com/andi34/photobooth/wiki/Installation-on-Windows) added to Wiki
+  - install-raspbian.sh script:
+    - Ask if a Raspberry Pi (HQ) camera is used, if yes setup personal config with needed changes
+    - allow to install from all devices running debian/debian based OS  [#181](https://github.com/andi34/photobooth/pull/181)
 - Error handling:
   - api (applyEffects): check if GD library is loaded
   - check if frames and font are valid
-- Add Italian to supported languages
-- Allow to download data folder as zip from [http://localhost/admin/diskusage.php](http://localhost/admin/diskusage.php)
-- Add prettier-php plugin (and slightly adjust prettier config for php files) to force one codestyle [#124](https://github.com/andi34/photobooth/pull/124)
+- Lanugage support:
+  - Add Italian to supported languages
 - Collage:
   - Rotate collage images and final collage if needed (Fix [#156](https://github.com/andi34/photobooth/issues/156))  [#63](https://github.com/andi34/photobooth/pull/63)
   - Allow to retake a single picture on collage with interruption (Fix [#166](https://github.com/andi34/photobooth/issues/166))
 - Remotebuzzer [#201](https://github.com/andi34/photobooth/pull/201), [#202](https://github.com/andi34/photobooth/pull/202):
   - replace gpio by onoff library
   - Add additional button support for collage, print and shutdown
-- don't use relative paths for font, frames and background images
-- folders are always part of data folder (besides data folder itself and archives folder)
-  - e.g. images folder config before: `data/images`  
-    now: `images` (this will also point to `data/images`)
-- use 100% picture quality while processing images to not lower given configured jpeg quality for the final image
-- handle login check earlier to protect other api endpoints [#205](https://github.com/andi34/photobooth/pull/205)
+- Code style:
+  - Add prettier-php plugin (and slightly adjust prettier config for php files) to force one codestyle [#124](https://github.com/andi34/photobooth/pull/124)
+- Robustness and improvements:
+  - don't use relative paths for font, frames and background images
+  - folders are always part of data folder (besides data folder itself and archives folder)
+    - e.g. images folder config before: `data/images`  
+      now: `images` (this will also point to `data/images`)
+  - use 100% picture quality while processing images to not lower given configured jpeg quality for the final image
+- Authentication:
+  - handle login check earlier to protect other api endpoints [#205](https://github.com/andi34/photobooth/pull/205)
 
 #### 2.10.0
 **Bugfixes**
