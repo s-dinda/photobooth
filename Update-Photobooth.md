@@ -1,10 +1,10 @@
 ### Updating Photobooth on Raspbian
 
-#### Updating from v1.9.x or older version
-To update from an old version to v2.x it's recommend to [make a clean installalation](home#installation).
+#### Updating from v1.9.x or older
+To update from an old version to v2.x or to v3.x it's recommend to [make a clean installalation](home#installation).
 
 
-#### Updating from v2.x to a newer version
+#### Updating from v2.x or v3.x
 
 **If you have the git-version of Photobooth installed:**
 
@@ -15,7 +15,7 @@ Run below commands in your terminal:
 sudo -u www-data -s
 cd /var/www/html
 git fetch origin
-git checkout origin/stable2
+git checkout origin/stable3
 git submodule update --init
 yarn install
 yarn build
@@ -40,7 +40,7 @@ git remote add andi34 https://github.com/andi34/photobooth.git
 Now fetch the sources, checkout the right branch, install dependencies and build needed files:
 ```
 git fetch andi34
-git checkout andi34/stable2
+git checkout andi34/stable3
 git submodule update --init
 yarn install
 yarn build

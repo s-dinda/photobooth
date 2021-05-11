@@ -211,18 +211,8 @@ sudo gpasswd -a www-data lpadmin
 ```
 
 ### Install Remote Buzzer support
-The following steps are optional, please only apply if you like to use the remote buzzer feature on a Raspberry PI. A reboot is needed to apply `dtoverlay` settings during Raspberry PI OS kernel startup.
-```
-usermod -a -G gpio www-data
-
-cat > /etc/udev/rules.d/20-photobooth-gpiomem.rules <<EOF
-SUBSYSTEM=="bcm2835-gpiomem", KERNEL=="gpiomem", GROUP="gpio", MODE="0660"
-EOF
-
-cat >> /boot/config.txt  << EOF
-dtoverlay=gpio-no-irq
-EOF
-```
+Please follow the steps mentioned in the FAQ:
+* **Q:** [Can I use Hardware Button on my Raspberry Pi, to take a Picture?](FAQ#can-i-use-hardware-button-on-my-raspberry-pi-to-take-a-picture)
 
 ### Try it out
 
