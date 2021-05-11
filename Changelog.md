@@ -5,7 +5,21 @@
 To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
-- _nothing for now_
+
+**Bugfixes**
+- fix horizontal flip of preview on some browser
+
+**New Options**
+- Pre- / Post- Command [#232](https://github.com/andi34/photobooth/pull/232):
+  - execute a shell command before a picture is taken (pre-command)
+  - execute a shell command after processing is is completed (post-command)
+- Add HTML capability to E-Mail text [#231](https://github.com/andi34/photobooth/pull/231)
+
+**General**
+- hidden adminshortcut: direct to login panel
+- login panel:
+  - allow to access Live keying
+  - add link to Telegram Community
 
 <hr>
 
