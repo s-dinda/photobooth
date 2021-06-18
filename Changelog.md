@@ -8,14 +8,21 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 **Bugfixes**
 - fix horizontal flip of preview on some browser
+- fix decore line config [#257](https://github.com/andi34/photobooth/pull/257)
+- fix rotary button support for standalone gallery [#253](https://github.com/andi34/photobooth/pull/253)
+- core: fix background from device cam
+- login: protect Live keying if index is protected via login
+- lang (en): fix delete request
 
 **New Options**
 - Pre- / Post- Command [#232](https://github.com/andi34/photobooth/pull/232):
   - execute a shell command before a picture is taken (pre-command)
   - execute a shell command after processing is is completed (post-command)
 - Add HTML capability to E-Mail text [#231](https://github.com/andi34/photobooth/pull/231)
+- Hide home button on results screen [#256](https://github.com/andi34/photobooth/pull/256)
 
 **General**
+- updated build dependencies
 - hidden adminshortcut: direct to login panel
 - login panel:
   - allow to access Live keying
