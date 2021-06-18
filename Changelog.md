@@ -7,6 +7,19 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 
 **Bugfixes**
+  - _nothig for now_
+
+**New Options**
+  - _nothig for now_
+
+**General**
+  - _nothig for now_
+
+<hr>
+
+#### 3.1.0
+
+**Bugfixes**
 - fix horizontal flip of preview on some browser
 - fix decore line config [#257](https://github.com/andi34/photobooth/pull/257)
 - fix rotary button support for standalone gallery [#253](https://github.com/andi34/photobooth/pull/253)
