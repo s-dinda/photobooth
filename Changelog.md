@@ -6,14 +6,30 @@ To use a preview of the upcoming Version you need to install the `Install last d
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
 
+**Security**
+- api: don't show mail password and sensible login data [#274](https://github.com/andi34/photobooth/pull/274)
+- api: Bugfix for server-side node scripts to correctly parse the config file
+
 **Bugfixes**
-  - _nothig for now_
+- sync-to-drive: bugfix for depreciated handling of type error - cannot read property of undefined
 
 **New Options**
-  - _nothig for now_
+- remote-buzzer:
+  - allow to enable/disable rotary control for standalone gallery [#261](https://github.com/andi34/photobooth/pull/261)
+  - allow parallel use of buttons- and rotary control [#262](https://github.com/andi34/photobooth/pull/262)
 
 **General**
-  - _nothig for now_
+- updated build dependencies
+- Collage: Always show image after taken [#271](https://github.com/andi34/photobooth/pull/271)
+- Debug Panel [#275](https://github.com/andi34/photobooth/pull/27) and better logging on issues while taking a picture [#277](https://github.com/andi34/photobooth/pull/277):  
+  Implements a panel for to help debugging in case of issues. Focus is to be able to access through the browser key configuration and log files on the server side.  
+  This feature is  
+  1) for fast and efficient debugging iterations  
+  and  
+  2) also well positioned to help people with less experience on the server administration and Unix / Raspberry Pi OS side of things.  
+
+  Access to the debug panel is available through the admin panel (switch to expert view) or via direct URL [http://localhost/admin/debugpanel.php](http://localhost/admin/debugpanel.php)  
+- result screen: smaller QR code & smaller font-size
 
 <hr>
 
