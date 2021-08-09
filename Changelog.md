@@ -5,31 +5,49 @@
 To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
+**Bugfixes**
+  - _nothig for now_
+
+**New Options**
+  - _nothig for now_
+
+**General**
+  - _nothig for now_
+
+<hr>
+
+#### 3.2.0
 
 **Security**
 - api: don't show mail password and sensible login data [#274](https://github.com/andi34/photobooth/pull/274)
 - api: Bugfix for server-side node scripts to correctly parse the config file
+- Temporary removed numbered image naming option to prevent overriding existing images. For details see [Issue 291](https://github.com/andi34/photobooth/issues/291).
 
 **Bugfixes**
 - sync-to-drive: bugfix for depreciated handling of type error - cannot read property of undefined
+- collage: Apply defined effect(s) and/or filter to the single images instead of the final collage (partially [#290](https://github.com/andi34/photobooth/pull/290))
 
 **New Options**
-- remote-buzzer:
+- Remote-buzzer:
   - allow to enable/disable rotary control for standalone gallery [#261](https://github.com/andi34/photobooth/pull/261)
   - allow parallel use of buttons- and rotary control [#262](https://github.com/andi34/photobooth/pull/262)
 
 **General**
-- updated build dependencies
-- Collage: Always show image after taken [#271](https://github.com/andi34/photobooth/pull/271)
-- Debug Panel [#275](https://github.com/andi34/photobooth/pull/27) and better logging on issues while taking a picture [#277](https://github.com/andi34/photobooth/pull/277):  
+- Updated build dependencies
+- Collage: Always show image after taken [#271](https://github.com/andi34/photobooth/pull/271), partially [#290](https://github.com/andi34/photobooth/pull/290)
+- Debug Panel [#275](https://github.com/andi34/photobooth/pull/27) and better logging on issues while taking a picture [#277](https://github.com/andi34/photobooth/pull/277) and post-processing (partially [#290](https://github.com/andi34/photobooth/pull/290)):  
   Implements a panel for to help debugging in case of issues. Focus is to be able to access through the browser key configuration and log files on the server side.  
   This feature is  
   1) for fast and efficient debugging iterations  
   and  
   2) also well positioned to help people with less experience on the server administration and Unix / Raspberry Pi OS side of things.  
 
-  Access to the debug panel is available through the admin panel (switch to expert view) or via direct URL [http://localhost/admin/debugpanel.php](http://localhost/admin/debugpanel.php)  
+  Access to the debug panel is available through the admin panel (switch to expert view) or via direct URL [http://localhost/admin/debugpanel.php](http://localhost/admin/debugpanel.php).  
+- Removed unneeded file-type checks all around the Photobooth api (we check for jpeg images already inside the api/applyEffects.php)
 - result screen: smaller QR code & smaller font-size
+
+
+[Compare changes with v3.1.0](https://github.com/andi34/photobooth/compare/v3.1.0...v3.2.0).
 
 <hr>
 
@@ -56,6 +74,9 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 - login panel:
   - allow to access Live keying
   - add link to Telegram Community
+
+
+[Compare changes with v3.0.0](https://github.com/andi34/photobooth/compare/v3.0.0...v3.1.0).
 
 <hr>
 
