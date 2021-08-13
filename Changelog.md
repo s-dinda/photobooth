@@ -16,6 +16,16 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 <hr>
 
+#### 3.2.1
+
+**Bugfixes**
+- fix collage without filter/effect applied to single images
+
+<hr>
+
+
+[Compare changes with v3.2.0](https://github.com/andi34/photobooth/compare/v3.2.0...v3.2.1).
+
 #### 3.2.0
 
 **Security**
@@ -26,8 +36,10 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 **Bugfixes**
 - sync-to-drive: bugfix for depreciated handling of type error - cannot read property of undefined
 - collage: Apply defined effect(s) and/or filter to the single images instead of the final collage (partially [#290](https://github.com/andi34/photobooth/pull/290))
+- core: new timeout only if no activity in progress [#273](https://github.com/andi34/photobooth/pull/273), fixes Issue [#272](https://github.com/andi34/photobooth/pull/272)
 
 **New Options**
+- countdown offset to compensate shutter-delay and cheese time [#286](https://github.com/andi34/photobooth/pull/286)
 - Remote-buzzer:
   - allow to enable/disable rotary control for standalone gallery [#261](https://github.com/andi34/photobooth/pull/261)
   - allow parallel use of buttons- and rotary control [#262](https://github.com/andi34/photobooth/pull/262)
