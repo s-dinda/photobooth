@@ -5,14 +5,32 @@
 To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
+**Breaking changes**
+  - (config) Switch from milliseconds to seconds the image is visible on result screen  
+    _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
+
 **Bugfixes**
-  - _nothig for now_
+  - standalone slideshow: fix auto refresh
+  - hide inner navigation panel if thrill is triggered from result page
+  - fix hang of remotebuzzer server on error
+  - picture and mail database always need a name, add fallback to default if empty
 
 **New Options**
-  - _nothig for now_
+  - remotebuzzer: Allow to configure GPIO debouce delay through admin panel [#294](https://github.com/andi34/photobooth/pull/294)
+  - ui: add option to show / hide button bar on result screen
+  - general: add config to use sample pictures instead taking a picture, dev-mode now only enables advanced logging for debugging purpose
 
 **General**
-  - _nothig for now_
+  - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296)
+  - Add experimental Photobooth Updater and dependencies checker [#285](https://github.com/andi34/photobooth/pull/285)
+  - install-raspbian.sh:
+    - allow silent installation (`sudo bash install-raspbian.sh WEBSERVER silent`)
+    - don't delete INSTALLFOLDERPATH if exists, make a backup instead
+    - inform about URL to access Photobooth
+  - adjust default chromium flags
+  - build: add "clean" task
+  - style: allow adjustments via private/overrides.css (automatically used if the file exist)
+  - debugpanel: show latest git changes of installation
 
 <hr>
 
