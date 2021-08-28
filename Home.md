@@ -46,6 +46,7 @@ A Photobooth webinterface for Raspberry Pi and Windows.
 * **Q:** [How to ajust the php.ini file?](FAQ#how-to-ajust-the-phpini-file)
 * **Q:** [How to turn Photobooth into a WIFI hotspot?](FAQ#turn-photobooth-into-a-wifi-hotspot)
 * **Q:** [Automatic picture syncing to USB stick](FAQ#automatic-picture-syncing-to-usb-stick)
+* **Q:** [Raspberry Touchpanel DSI simultaneously with HDMI](FAQ#raspberry-touchpanel-dsi-simultaneously-with-hdmi)
 
 ## Changelog
 View all version changes [here](changelog).
