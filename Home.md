@@ -47,6 +47,7 @@ A Photobooth webinterface for Raspberry Pi and Windows.
 * **Q:** [How to turn Photobooth into a WIFI hotspot?](FAQ#turn-photobooth-into-a-wifi-hotspot)
 * **Q:** [Automatic picture syncing to USB stick](FAQ#automatic-picture-syncing-to-usb-stick)
 * **Q:** [Raspberry Touchpanel DSI simultaneously with HDMI](FAQ#raspberry-touchpanel-dsi-simultaneously-with-hdmi)
+* **Q:** [How to administer CUPS remotely using the web interface?](FAQ#how-to-administer-cups-remotely-using-the-web-interface)
 
 ## Changelog
 View all version changes [here](changelog).
