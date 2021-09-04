@@ -210,6 +210,13 @@ sudo gpasswd -a www-data lp
 sudo gpasswd -a www-data lpadmin
 ```
 
+By default the CUPS webinterface can only be accessed via [http://localhost:631](http://localhost:631) from your local machine.  
+To remote access CUPS from other clients you need to run the following commands:
+```
+sudo cupsctl --remote-any
+sudo /etc/init.d/cups restart
+```
+
 ### Install Remote Buzzer support
 Please follow the steps mentioned in the FAQ:
 * **Q:** [Can I use Hardware Button on my Raspberry Pi, to take a Picture?](FAQ#can-i-use-hardware-button-on-my-raspberry-pi-to-take-a-picture)
