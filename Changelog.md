@@ -19,18 +19,36 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
   - remotebuzzer: Allow to configure GPIO debouce delay through admin panel [#294](https://github.com/andi34/photobooth/pull/294)
   - ui: add option to show / hide button bar on result screen
   - general: add config to use sample pictures instead taking a picture, dev-mode now only enables advanced logging for debugging purpose
+  - add button for reboot and shutdown on linux
+  - continuous collage: allow to disable single images being visible
+  - feature: allow sending a GET request at countdown and/or after processing [#308](https://github.com/andi34/photobooth/pull/308)
 
 **General**
-  - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296)
+  - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296), add config to skip by default
   - Add experimental Photobooth Updater and dependencies checker [#285](https://github.com/andi34/photobooth/pull/285)
   - install-raspbian.sh:
     - allow silent installation (`sudo bash install-raspbian.sh WEBSERVER silent`)
     - don't delete INSTALLFOLDERPATH if exists, make a backup instead
     - inform about URL to access Photobooth
+    - ask if remote access to CUPS should be enabled
+  - update-booth.sh:
+    - also copy hidden files and folder
   - adjust default chromium flags
   - build: add "clean" task
-  - style: allow adjustments via private/overrides.css (automatically used if the file exist)
+  - style: allow adjustments via `private/overrides.css` (automatically used if the file exist)
   - debugpanel: show latest git changes of installation
+  - Add script to disable automount and add polkit rules for USB Sync (Only needed if you have declined the question to enable the USB sync file backup while running the `install-raspbian.sh` and like to use the USB Sync feature.):
+```
+wget https://raw.githubusercontent.com/andi34/photobooth/dev/enable-usb-sync.sh
+sudo bash enable-usb-sync.sh
+```
+  - disabled version checker on dev branch
+  - add tools.js with central access to common functions
+
+**FAQ**
+  - adjust chromium flags
+  - Raspberry Touchpanel DSI simultaneously with HDMI
+  - How to administer CUPS remotely using the web interface?
 
 <hr>
 
