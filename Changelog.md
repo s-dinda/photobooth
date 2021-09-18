@@ -22,6 +22,7 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
   - add button for reboot and shutdown on linux
   - continuous collage: allow to disable single images being visible
   - feature: allow sending a GET request at countdown and/or after processing [#308](https://github.com/andi34/photobooth/pull/308)
+  - text on {picture,collage,print}: use color picker - This gives the possibility to use any color instead choosing one out of three defined colors! [#312](https://github.com/andi34/photobooth/pull/312)
 
 **General**
   - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296), add config to skip by default
