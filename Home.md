@@ -34,7 +34,7 @@ A Photobooth webinterface for Raspberry Pi and Windows.
 * **Q:** [How to change the look of my Photobooth?](FAQ#how-to-change-the-look-of-my-photobooth)
 * **Q:** [How to keep pictures on my Camera using gphoto2?](FAQ#how-to-keep-pictures-on-my-camera-using-gphoto2)
 * **Q:** [Cromakeying is saving without finishing saving](FAQ#cromakeying-is-saving-without-finishing-saving)
-* **Q:** [Can I use Hardware Button on my Raspberry Pi, to take a Picture?](FAQ#can-i-use-hardware-button-on-my-raspberry-pi-to-take-a-picture)
+* **Q:** [Can I use Hardware Button to take a Picture?](FAQ#can-i-use-hardware-button-to-take-a-picture)
 * **Q:** [How do I enable Kiosk Mode to automatically start Photobooth in full screen?](FAQ#how-do-i-enable-kiosk-mode-to-automatically-start-photobooth-in-full-screen)
 * **Q:** [How to disable the blank screen on Raspberry Pi (Raspbian)?](FAQ#how-to-disable-the-blank-screen-on-raspberry-pi-raspbian)
 * **Q:** [How to use a live stream as background at countdown?](FAQ#how-to-use-a-live-stream-as-background-at-countdown)
