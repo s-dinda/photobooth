@@ -8,21 +8,38 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 **Breaking changes**
   - (config) Switch from milliseconds to seconds the image is visible on result screen  
     _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
+  - vendor: phpqrcode as submodule
 
 **Bugfixes**
   - standalone slideshow: fix auto refresh
   - hide inner navigation panel if thrill is triggered from result page
   - fix hang of remotebuzzer server on error
   - picture and mail database always need a name, add fallback to default if empty
+  - configsetup: add event option to basic view (fixes [Issue #320](https://github.com/andi34/photobooth/issues/320))
+  - build: fix build failing on macOS (fixes [Issue #318](https://github.com/andi34/photobooth/issues/318))
+  - Fix Typo in admin.php while using a custom style [#322](https://github.com/andi34/photobooth/pull/322)
 
 **New Options**
-  - remotebuzzer: Allow to configure GPIO debouce delay through admin panel [#294](https://github.com/andi34/photobooth/pull/294)
+  - remotebuzzer:
+    - Allow to configure GPIO debouce delay through admin panel [#294](https://github.com/andi34/photobooth/pull/294)
+    - Allow using remotebuzzer server for HID devices and/or Software buttons, also allow using remotebuzzer server **without** GPIO devices [#311](https://github.com/andi34/photobooth/pull/311) (fixes [Issue #284](https://github.com/andi34/photobooth/issues/284))
   - ui: add option to show / hide button bar on result screen
   - general: add config to use sample pictures instead taking a picture, dev-mode now only enables advanced logging for debugging purpose
   - add button for reboot and shutdown on linux
-  - continuous collage: allow to disable single images being visible
+  - collage:
+    - continuous collage: allow to disable single images being visible
+    - allow to define collage background color [#324](https://github.com/andi34/photobooth/pull/324)
+    - add option to add all images from collage to gallery [#307](https://github.com/andi34/photobooth/pull/307) (fixes [Issue #269](https://github.com/andi34/photobooth/issues/269))
   - feature: allow sending a GET request at countdown and/or after processing [#308](https://github.com/andi34/photobooth/pull/308)
   - text on {picture,collage,print}: use color picker - This gives the possibility to use any color instead choosing one out of three defined colors! [#312](https://github.com/andi34/photobooth/pull/312)
+  - QR:
+    - Add close button to QR [#316](https://github.com/andi34/photobooth/pull/316) (fixes [Issue #315](https://github.com/andi34/photobooth/issues/315))
+    - Own QR menu entry [#325](https://github.com/andi34/photobooth/pull/325):
+      - Enable/Disable QR-Code
+      - Allow to define a own URL used for the QR-Code
+        - Add fallback to default setting if not defined
+      - Decide whether to append the filename to defined URL
+      - Allow to define a own help text visible below the QR-Code
 
 **General**
   - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296), add config to skip by default
