@@ -22,7 +22,6 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 **New Options**
   - remotebuzzer:
     - Allow to configure GPIO debouce delay through admin panel [#294](https://github.com/andi34/photobooth/pull/294)
-    - Allow using remotebuzzer server for HID devices and/or Software buttons, also allow using remotebuzzer server **without** GPIO devices [#311](https://github.com/andi34/photobooth/pull/311) (fixes [Issue #284](https://github.com/andi34/photobooth/issues/284))
   - ui: add option to show / hide button bar on result screen
   - general: add config to use sample pictures instead taking a picture, dev-mode now only enables advanced logging for debugging purpose
   - add button for reboot and shutdown on linux
