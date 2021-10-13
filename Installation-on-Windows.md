@@ -37,6 +37,8 @@ LoadModule php7_module "C:/php/php7apache2_4.dll"
 
 PHPIniDir "C:/php"
 ```
+For reference see [f260b49](https://github.com/andi34/photobooth/commit/f260b49d2029825d33eb9d35ceda3f19423418db)
+
 
 Inside `C:\Apache24\htdocs` add a new file called `info.php` and add the following content:  
 ```
@@ -57,7 +59,9 @@ Go to `C:\php` and rename the `php.ini-production` to `php.ini`.
 Edit the `php.ini` using **Notepad++** to enable the GD library:  
 Find `;extension=fileinfo` and remove the `;` in front of the line.  
 Find `;extension=gd2` and remove the `;` in front of the line.  
-Find `;extension_dir = "ext"` and remove the `;` in front of the line and change it to `extension_dir = "C:/php/ext"`
+Find `;extension_dir = "ext"` and remove the `;` in front of the line and change it to `extension_dir = "C:/php/ext"`.
+
+For reference see [ff4259a](https://github.com/andi34/photobooth/commit/ff4259aece2094922c1d9b8fc2825fb44a710560)
 
 ### Start Apache Server
 Go to `C:\Apache24` and right click on the cmd.bat, choose "Run as administrator":  
