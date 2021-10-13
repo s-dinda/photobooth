@@ -2,7 +2,7 @@
 
 ### Download needed files
 - Download Apache2 and Visual C++ Redistributable for Visual Studio: https://www.apachelounge.com/download
-- Download PHP (VC15 x64 Thread Safe): https://windows.php.net/download
+- Download PHP 7.3.x or PHP 7.4.x (VC15 x64 Thread Safe): https://windows.php.net/download
 - Download Digicamcontrol: http://digicamcontrol.com/download
 - Download Notepad++: https://notepad-plus-plus.org/downloads
 - Download latest Photobooth release: https://github.com/andi34/photobooth/releases
@@ -10,8 +10,8 @@
 ### Install & extract needed Software
 - Install Notepad++
 - Install Visual C++ Redistributable for Visual Studio
-- Extract the Apache2 ZIP to C:/
-- Extract the PHP ZIP to C:/php
+- Extract the Apache2 ZIP (httpd-2.4.X-winXX-XXXX.zip) to C:/
+- Extract the PHP ZIP (php-7.X.XX-Win32-vc15-xXX.zip) to C:/php
 
 ### Prepare Apache HTTP Server
 Edit `C:\Apache24\conf\httpd.conf` using **Notepad++**  
