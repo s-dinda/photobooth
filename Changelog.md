@@ -6,7 +6,6 @@ To use a preview of the upcoming Version you need to install the `Install last d
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
 **Breaking changes**
-  - Node.js v17.x needed
   - (config) Switch from milliseconds to seconds the image is visible on result screen  
     _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
   - vendor: phpqrcode as submodule
