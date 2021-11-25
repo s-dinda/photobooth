@@ -1,7 +1,9 @@
 ## Automated installation on Raspberry Pi OS (previously called Raspbian) and on Debian / Debian based distributions:
 To make the installation as simple as possible, we have created an installation script for you. It will setup your Raspberry Pi, Computer or Laptop as a full blown Photobooth (using Apache Webserver). This means, Photobooth and all needed packages and dependencies get installed and the automatic camera mount is disabled. On a Raspberry Pi you can choose that Photobooth is started in fullscreen on startup.
 
-If you encounter any issues or want more freedom to configure your Pi, Computer or Laptop, we recommend you look at the detailed installation instruction below.
+If you encounter any issues or want more freedom to configure your Pi, Computer or Laptop, we recommend you look at the detailed installation instruction below.  
+The installation script is intendet to work on Raspberry Pi OS based on Debian bullseye (released October 2021).  
+**Note:** If you are using an older version of Rasperry Pi OS or Debian / Debian based distribution make sure Node.js v12.22.x is installed!  
 
 ```
 wget https://raw.githubusercontent.com/andi34/photobooth/dev/install-raspbian.sh
