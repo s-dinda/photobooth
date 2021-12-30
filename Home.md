@@ -14,15 +14,6 @@ A Photobooth webinterface for Raspberry Pi and Windows.
 
 * [Update Photobooth](Update-Photobooth)
 
-
-## Browser support
-
-- Edge <= 16
-- Firefox <= 60
-- Chrome <= 61
-- Safari <= 9
-- Opera <= 48
-
 ## FAQ - Frequently asked questions
 
 * **Q:** [Is my Camera supported?](FAQ#is-my-camera-supported)
