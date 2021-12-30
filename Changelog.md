@@ -6,6 +6,8 @@ To use a preview of the upcoming Version you need to install the `Install last d
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
 **Breaking changes**
+  - If you are using an older version of Rasperry Pi OS or Debian / Debian based distribution make sure Node.js v12.22.x is installed!  
+    Check your Node.js version while running `node -v` from your terminal.  
   - (config) Switch from milliseconds to seconds the image is visible on result screen  
     _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
   - vendor: phpqrcode as submodule
@@ -13,7 +15,9 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 **Bugfixes**
   - standalone slideshow: fix auto refresh
   - hide inner navigation panel if thrill is triggered from result page
-  - fix hang of remotebuzzer server on error
+  - remotebuzzer:
+    - fix hang of remotebuzzer server on error
+    - bugfix for hardware button to trigger collage mode [#351](https://github.com/andi34/photobooth/pull/351) (fixes [Issue #300](https://github.com/andi34/photobooth/issues/300))
   - picture and mail database always need a name, add fallback to default if empty
   - configsetup: add event option to basic view (fixes [Issue #320](https://github.com/andi34/photobooth/issues/320))
   - build: fix build failing on macOS (fixes [Issue #318](https://github.com/andi34/photobooth/issues/318))
@@ -29,6 +33,7 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
     - continuous collage: allow to disable single images being visible
     - allow to define collage background color [#324](https://github.com/andi34/photobooth/pull/324)
     - add option to add all images from collage to gallery [#307](https://github.com/andi34/photobooth/pull/307) (fixes [Issue #269](https://github.com/andi34/photobooth/issues/269))
+    - add cutting lines on 2x4 collage layouts
   - feature: allow sending a GET request at countdown and/or after processing [#308](https://github.com/andi34/photobooth/pull/308)
   - text on {picture,collage,print}: use color picker - This gives the possibility to use any color instead choosing one out of three defined colors! [#312](https://github.com/andi34/photobooth/pull/312)
   - QR:
@@ -61,6 +66,8 @@ sudo bash enable-usb-sync.sh
 ```
   - disabled version checker on dev branch
   - add tools.js with central access to common functions
+  - Adjust and optimize different APO endpoints
+  - Updated build dependencies
 
 **FAQ**
   - adjust chromium flags

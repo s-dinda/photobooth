@@ -4,6 +4,7 @@ To make the installation as simple as possible, we have created an installation 
 If you encounter any issues or want more freedom to configure your Pi, Computer or Laptop, we recommend you look at the detailed installation instruction below.  
 The installation script is intendet to work on Raspberry Pi OS based on Debian bullseye (released October 2021).  
 **Note:** If you are using an older version of Rasperry Pi OS or Debian / Debian based distribution make sure Node.js v12.22.x is installed!  
+Check your Node.js version while running `node -v` from your terminal.  
 
 ```
 wget https://raw.githubusercontent.com/andi34/photobooth/dev/install-raspbian.sh
