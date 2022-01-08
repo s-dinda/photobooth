@@ -159,6 +159,11 @@ common_software() {
     curl -fsSL https://deb.nodesource.com/setup_12.x | bash -
     apt-get install -y nodejs
     node -v
+
+    if [ "$KIOSK_LITE_MODE" = true ]; then
+        info "### Installing needed dependencies for Kiosk Mode..."
+        apt install -y --no-install-recommends xserver-xorg-video-all xserver-xorg-input-all xserver-xorg-core xinit x11-xserver-utils chromium-browser
+    fi
 }
 
 apache_webserver() {
@@ -262,7 +267,7 @@ start_install() {
     git clone https://github.com/andi34/photobooth $INSTALLFOLDER
     cd $INSTALLFOLDERPATH
 
-    info "### We are installing last development version for bullseye"
+    info "### We are installing last development version"
     VERSION="development"
     git fetch origin dev
     git checkout origin/dev
@@ -376,8 +381,6 @@ EOF
 }
 
 kioskbooth_light() {
-    info "### Installing needed dependencies..."
-    apt install -y --no-install-recommends xserver-xorg-video-all xserver-xorg-input-all xserver-xorg-core xinit x11-xserver-utils chromium-browser
 
 cat > /home/pi/.xinitrc <<EOF
 #!/usr/bin/env sh
