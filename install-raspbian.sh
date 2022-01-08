@@ -14,6 +14,7 @@ IPADDRESS=$(hostname -I | cut -d " " -f 1)
 SUBFOLDER=true
 PI_CAMERA=false
 KIOSK_MODE=false
+KIOSK_LITE_MODE=false
 USB_SYNC=false
 SETUP_CUPS=false
 CUPS_REMOTE_ANY=false
@@ -376,9 +377,10 @@ EOF
 
 kioskbooth_light() {
     info "### Installing needed dependencies..."
-    apt install -y --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox chromium-browser libgtk-3-0
+    apt install -y --no-install-recommends xserver-xorg-video-all xserver-xorg-input-all xserver-xorg-core xinit x11-xserver-utils chromium-browser
 
-cat >> /etc/xdg/openbox/autostart <<EOF
+cat > /home/pi/.xinitrc <<EOF
+#!/usr/bin/env sh
 # turn off display power management system
 xset -dpms
 # turn off screen blanking
@@ -386,27 +388,20 @@ xset s noblank
 # turn off screen saver
 xset s off
 
-# Allow quitting the X server with CTRL-ATL-Backspace
-setxkbmap -option terminate:ctrl_alt_bksp
-
-# Remove exit errors from the config files that could trigger a warning
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
-
-# Run Chromium in kiosk mode
-chromium-browser --noerrdialogs --disable-infobars --disable-features=Translate --no-first-run --check-for-update-interval=31536000 --kiosk http://127.0.0.1 --touch-events=enabled
-EOF
-
-cat >> /etc/X11/Xwrapper.config <<EOF
-allowed_users=anybody
+# Hide mousecursor and run Chromium in kiosk mode
+unclutter &
+chromium-browser --window-size=1920,1080 --window-position=0,0 --noerrdialogs --disable-infobars --disable-features=Translate --no-first-run --check-for-update-interval=31536000 --kiosk http://127.0.0.1 --touch-events=enabled
 EOF
 
 cat >> /home/pi/.bash_profile <<EOF
-[[ -z \$DISPLAY && \$XDG_VTNR -eq 1 ]] && startx -- -nocursor
+if [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ]
+then
+  startx
+fi
 EOF
 
-chmod u+s /usr/bin/Xorg
-usermod -a -G tty pi
+    chown -R pi:pi /home/pi/.xinitrc
+    chown -R pi:pi /home/pi/.bash_profile
 }
 
 cups_setup() {
@@ -470,8 +465,15 @@ if [ "$RUNNING_ON_PI" = true ]; then
     ask_yes_no "### Open Chromium in Kiosk Mode at every boot and hide the mouse cursor? [y/N] " "N"
     echo -e "\033[0m"
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        KIOSK_MODE=true
         COMMON_PACKAGES+=('unclutter')
+        echo -e "\033[0;33m"
+        ask_yes_no "### You are using a Raspberry Pi OS Lite image? [y/N] " "N"
+        echo -e "\033[0m"
+        if [[ $REPLY =~ ^[Yy]$ ]]; then
+            KIOSK_LITE_MODE=true
+        else
+            KIOSK_MODE=true
+        fi
     fi
 
     echo -e "\033[0;33m### Sync to USB - this feature will automatically copy (sync) new pictures to a USB stick."
@@ -501,6 +503,9 @@ fi
 if [ "$KIOSK_MODE" = true ]; then
     kioskbooth_desktop
 fi
+if [ "$KIOSK_LITE_MODE" = true ]; then
+    kioskbooth_light
+fi
 if [ "$SETUP_CUPS" = true ]; then
     cups_setup
 fi
@@ -516,6 +521,13 @@ info ""
 info "    Photobooth can be accessed at:"
 info "        $URL"
 info ""
+if [ "$KIOSK_LITE_MODE" = true ]; then
+    info "### Chromium kiosk mode run on window-size 1920x1080, edit /home/pi/.xinitrc to adjust for your screen resolution!"
+    info ""
+    info "### Please run sudo raspi-config to enable Console Autologin:"
+    info "###    >>> Go to: System Options -> Boot / Auto Login -> Console Autologin"
+    info ""
+fi
 info "###"
 info "### Have fun with your Photobooth, but first restart your device!"
 
