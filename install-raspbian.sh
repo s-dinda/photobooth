@@ -122,7 +122,7 @@ echo "
 common_software() {
     info "### First we update your system. That's not worth mentioning."
     apt update
-    apt dist-upgrade -y
+    apt upgrade -y
 
     info "### Photobooth needs some software to run."
     if [ "$WEBSERVER" == "nginx" ]; then
