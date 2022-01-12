@@ -49,6 +49,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
         - Add fallback to default setting if not defined
       - Decide whether to append the filename to defined URL
       - Allow to define a own help text visible below the QR-Code
+  - optional retry to take a picture on error [#366](https://github.com/andi34/photobooth/pull/366)
 
 **General**
   - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296), add config to skip by default
