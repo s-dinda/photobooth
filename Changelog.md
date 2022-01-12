@@ -5,12 +5,15 @@
 To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
+Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE)
+
 **Breaking changes**
   - If you are using an older version of Rasperry Pi OS or Debian / Debian based distribution make sure Node.js v12.22.x is installed!  
     Check your Node.js version while running `node -v` from your terminal.  
   - (config) Switch from milliseconds to seconds the image is visible on result screen  
     _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
   - vendor: phpqrcode as submodule
+  - config: Webserver IP should not contain subfolder, QR now needs it's own URL defined (see new Options)
 
 **Bugfixes**
   - standalone slideshow: fix auto refresh
@@ -18,6 +21,7 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
   - remotebuzzer:
     - fix hang of remotebuzzer server on error
     - bugfix for hardware button to trigger collage mode [#351](https://github.com/andi34/photobooth/pull/351) (fixes [Issue #300](https://github.com/andi34/photobooth/issues/300))
+    - fix socket.io Server on Photobooth subfolder installation [#364](https://github.com/andi34/photobooth/pull/364) (fixes [Issue #360](https://github.com/andi34/photobooth/issues/360))
   - picture and mail database always need a name, add fallback to default if empty
   - configsetup: add event option to basic view (fixes [Issue #320](https://github.com/andi34/photobooth/issues/320))
   - build: fix build failing on macOS (fixes [Issue #318](https://github.com/andi34/photobooth/issues/318))
@@ -49,10 +53,12 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
   - Add welcome screen on first access [#296](https://github.com/andi34/photobooth/pull/296), add config to skip by default
   - Add experimental Photobooth Updater and dependencies checker [#285](https://github.com/andi34/photobooth/pull/285)
   - install-raspbian.sh:
+    - ask all questions before installing anything
     - allow silent installation (`sudo bash install-raspbian.sh WEBSERVER silent`)
     - don't delete INSTALLFOLDERPATH if exists, make a backup instead
     - inform about URL to access Photobooth
     - ask if remote access to CUPS should be enabled
+    - install Node.js v12.22 if needed (for Debian buster compatibility)
   - update-booth.sh:
     - also copy hidden files and folder
   - adjust default chromium flags
@@ -68,6 +74,10 @@ sudo bash enable-usb-sync.sh
   - add tools.js with central access to common functions
   - Adjust and optimize different APO endpoints
   - Updated build dependencies
+  - general jquery improvements (thanks to Uwe Pieper)
+  - retry getting preview via gphoto if failed (thanks to Uwe Pieper)
+  - retry taking a picture if failed (thanks to Uwe Pieper)
+  - crowdin: translation import
 
 **FAQ**
   - adjust chromium flags
