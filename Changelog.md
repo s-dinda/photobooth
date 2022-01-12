@@ -13,7 +13,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - (config) Switch from milliseconds to seconds the image is visible on result screen  
     _Please adjust your configuration if you've changed the default setting on previous version. If you've not changed the default setting there's nothing to do._
   - vendor: phpqrcode as submodule
-  - config: Webserver IP should not contain subfolder, QR now needs it's own URL defined (see new Options)
+  - config: Webserver IP should not contain subfolder/subpages, IP should be detected if not defined. QR now needs it's own URL defined (see new Options).
 
 **Bugfixes**
   - standalone slideshow: fix auto refresh
@@ -74,12 +74,13 @@ sudo bash enable-usb-sync.sh
 ```
   - disabled version checker on dev branch
   - add tools.js with central access to common functions
-  - Adjust and optimize different APO endpoints
+  - Adjust and optimize different API endpoints
   - Updated build dependencies
   - general jquery improvements (thanks to Uwe Pieper)
   - retry getting preview via gphoto if failed (thanks to Uwe Pieper)
   - retry taking a picture if failed (thanks to Uwe Pieper)
   - crowdin: translation import
+  - config: try to dectect Webserver IP if not defined
 
 **FAQ**
   - adjust chromium flags
