@@ -26,6 +26,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - configsetup: add event option to basic view (fixes [Issue #320](https://github.com/andi34/photobooth/issues/320))
   - build: fix build failing on macOS (fixes [Issue #318](https://github.com/andi34/photobooth/issues/318))
   - Fix Typo in admin.php while using a custom style [#322](https://github.com/andi34/photobooth/pull/322)
+  - Fix preview from gphoto as background if BSM is disabled (thanks to Uwe Pieper), **note:** This is not recommended for a Raspberry Pi as it requires faster hardware!
 
 **New Options**
   - remotebuzzer:
