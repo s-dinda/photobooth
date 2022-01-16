@@ -5,7 +5,13 @@
 To use a preview of the upcoming Version you need to install the `Install last development version` using the `install-raspbian.sh` installer (now also works on all devices running debian / a debian based OS).  
 An updated FAQ can always be found at [localhost/faq](http://localhost/faq).  
 
-Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE)
+Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE).
+
+- __no changes for now__
+
+<hr>
+
+#### 3.3.0 (16.01.2022)
 
 **Breaking changes**
   - If you are using an older version of Rasperry Pi OS or Debian / Debian based distribution make sure Node.js v12.22.x is installed!  
