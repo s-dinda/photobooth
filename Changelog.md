@@ -7,7 +7,18 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE).
 
-- __no changes for now__
+**Bugfixes**
+  - livechroma: fix text formatting on error/retry
+  - api(takePic): fix error message, take picture command can be anything
+
+**New Options**
+  - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
+  - Shutter animation, enabled by default [#368](https://github.com/andi34/photobooth/pull/368)
+
+**General**
+  - Cleanup core.js:
+    - remove unneeded if checks
+    - improve readability
 
 <hr>
 
