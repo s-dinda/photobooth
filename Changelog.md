@@ -10,6 +10,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
 **Bugfixes**
   - livechroma: fix text formatting on error/retry
   - api(takePic): fix error message, take picture command can be anything
+  - fix print with QR Code
 
 **New Options**
   - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
