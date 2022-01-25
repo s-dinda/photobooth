@@ -7,6 +7,10 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE).
 
+**Breaking changes**
+- QR code is now printed onto the image instead on the right side to not break the image ratio,  
+  new options have been added for best user experience (see **New Options** for details)
+
 **Bugfixes**
   - livechroma: fix text formatting on error/retry
   - api(takePic): fix error message, take picture command can be anything
@@ -15,11 +19,18 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
 **New Options**
   - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
   - Shutter animation, enabled by default [#368](https://github.com/andi34/photobooth/pull/368)
+  - QR [#371](https://github.com/andi34/photobooth/pull/371):
+    - Error correction level adjustable
+    - Print:
+      - QR size adjustable
+      - QR offset adjustable
+      - QR position adjustable
 
 **General**
   - Cleanup core.js:
     - remove unneeded if checks
     - improve readability
+  - configsetup: add `<input type="number">` and use where possible to avoid issues on input
 
 <hr>
 
