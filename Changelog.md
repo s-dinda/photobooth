@@ -7,14 +7,23 @@ An updated FAQ can always be found at [localhost/faq](http://localhost/faq).
 
 Please read the license notice [here](https://github.com/andi34/photobooth/blob/dev/LICENSE_NOTICE).
 
+**Security**
+  - Security advice added to the README and welcome page [#376](https://github.com/andi34/photobooth/pull/376)
+
 **Breaking changes**
-- QR code is now printed onto the image instead on the right side to not break the image ratio,  
-  new options have been added for best user experience (see **New Options** for details)
+  - QR code is now printed onto the image instead on the right side to not break the image ratio,  
+    new options have been added for best user experience (see **New Options** for details)
+  - Remove French, Greek, Polish and Spanish from Language options
+    because they aren't maintained ([further information](https://github.com/andi34/photobooth/issues/64#issuecomment-1025126230))
 
 **Bugfixes**
   - livechroma: fix text formatting on error/retry
   - api(takePic): fix error message, take picture command can be anything
   - fix print with QR Code
+  - Fix gphoto preview on retry / next collage image.
+  - fix taking pictures from gphoto preview (**Note:** Gphoto won't be used, it's more like taking a screenshot of the Preview. Since Gphoto won't be used there's no flash light of the camera!)
+  - respect retry timeout:
+    The timeout should not be a new countdown, it should be a timeout as it's name says. Retry notification will now be visible for defined time. Countdown for picture/next collage image is not touched and will be used as defined.
 
 **New Options**
   - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
@@ -22,14 +31,24 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - QR [#371](https://github.com/andi34/photobooth/pull/371):
     - Error correction level adjustable
     - Print:
+      - Always print the QR onto the image instead in the right side (see **Breaking Changes**)
       - QR size adjustable
       - QR offset adjustable
       - QR position adjustable
 
 **General**
-  - Cleanup core.js:
+  - Import latest Crowdin translations
+  - Cleanup core.js [#369](https://github.com/andi34/photobooth/pull/369):
     - remove unneeded if checks
     - improve readability
+    - Let's start the picture process from beginning on retry.
+      Also start all previews like defined at countdown.
+    - add `flip-horizontal` class for preview if needed on api.reset
+    - Centralized preview start/stop functions, this helps getting a better overview of the code.
+    - log error messages to console from api.errorPic
+    - optimize error messages
+    - time configurations moved to constants
+    - move more ID selector to constants
   - configsetup: add `<input type="number">` and use where possible to avoid issues on input
 
 <hr>
