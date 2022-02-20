@@ -13,7 +13,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
 **Breaking changes**
   - QR code is now printed onto the image instead on the right side to not break the image ratio,  
     new options have been added for best user experience (see **New Options** for details)
-  - Remove French, Greek, Polish and Spanish from Language options
+  - Remove Greek, Polish and Spanish from Language options
     because they aren't maintained ([further information](https://github.com/andi34/photobooth/issues/64#issuecomment-1025126230))
 
 **Bugfixes**
@@ -24,6 +24,12 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - fix taking pictures from gphoto preview (**Note:** Gphoto won't be used, it's more like taking a screenshot of the Preview. Since Gphoto won't be used there's no flash light of the camera!)
   - respect retry timeout:
     The timeout should not be a new countdown, it should be a timeout as it's name says. Retry notification will now be visible for defined time. Countdown for picture/next collage image is not touched and will be used as defined.
+  - core: fix get request at countdown
+  - welcome.php: use detected URL to start Photobooth
+  - FAQ: fix command to execute setup-network.sh for hotspot
+  - frame/font: again allow to be located outside of photobooth source
+  - config(print): add fallback to defaults if print font/frame is not defined
+
 
 **New Options**
   - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
@@ -50,6 +56,10 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
     - time configurations moved to constants
     - move more ID selector to constants
   - configsetup: add `<input type="number">` and use where possible to avoid issues on input
+  - install-raspbian:
+    - ask to install Gutenprint drivers
+    - make sure a new question is recognized
+    - fix permissions on yarns cachefolder and .yarnrc if exists
 
 <hr>
 
