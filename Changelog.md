@@ -20,8 +20,10 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - livechroma: fix text formatting on error/retry
   - api(takePic): fix error message, take picture command can be anything
   - fix print with QR Code
-  - Fix gphoto preview on retry / next collage image.
-  - fix taking pictures from gphoto preview (**Note:** Gphoto won't be used, it's more like taking a screenshot of the Preview. Since Gphoto won't be used there's no flash light of the camera!)
+  - Video preview:
+    - Fix gphoto preview on retry / next collage image.
+    - fix taking pictures from gphoto preview (**Note:** Gphoto won't be used, it's more like taking a screenshot of the Preview. Since Gphoto won't be used there's no flash light of the camera!)
+    - hide video preview in background of interrupted collage
   - respect retry timeout:
     The timeout should not be a new countdown, it should be a timeout as it's name says. Retry notification will now be visible for defined time. Countdown for picture/next collage image is not touched and will be used as defined.
   - core: fix get request at countdown
@@ -29,7 +31,7 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
   - FAQ: fix command to execute setup-network.sh for hotspot
   - frame/font: again allow to be located outside of photobooth source
   - config(print): add fallback to defaults if print font/frame is not defined
-
+  - Continue collage with keypress [#408](https://github.com/andi34/photobooth/pull/408)
 
 **New Options**
   - Add traslate button to Adminpanel, opens Photobooth project on Crowdin
@@ -41,6 +43,9 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
       - QR size adjustable
       - QR offset adjustable
       - QR position adjustable
+  - Add config option to enable/disable the figure caption in the gallery view [#398](https://github.com/andi34/photobooth/pull/398)
+  - Collage:
+    - added simple 2+1 style that is to be used with a frame that fills the open space [#424](https://github.com/andi34/photobooth/pull/424)
 
 **General**
   - Import latest Crowdin translations
@@ -55,11 +60,18 @@ Please read the license notice [here](https://github.com/andi34/photobooth/blob/
     - optimize error messages
     - time configurations moved to constants
     - move more ID selector to constants
+  - Collage:
+    - Collage code cleanup (can most likely still be improved by using php classes but this should be okay)
+    - rename some collage styles (2+2 instead of 2x2 as x now always indicates pictures are reused - old name still works) [#424](https://github.com/andi34/photobooth/pull/424)
   - configsetup: add `<input type="number">` and use where possible to avoid issues on input
   - install-raspbian:
     - ask to install Gutenprint drivers
     - make sure a new question is recognized
     - fix permissions on yarns cachefolder and .yarnrc if exists
+  - gphoto: Added another way to control dslr cameras with cameracontrol.py [#386](https://github.com/andi34/photobooth/pull/386), [#387](https://github.com/andi34/photobooth/pull/387), [#393](https://github.com/andi34/photobooth/pull/393)
+  - Add a docker setup for local testing and development [#397](https://github.com/andi34/photobooth/pull/397)
+  - Remote buzzer:
+    - Add simple GET endpoints to trigger photos / collages (to support WiFi hardware buttons) [#400](https://github.com/andi34/photobooth/pull/400)
 
 <hr>
 
