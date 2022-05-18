@@ -3,11 +3,11 @@
 # Stop on the first sign of trouble
 set -e
 
-# Show all commands
-# set -x
-
-RUNNING_ON_PI=true
+USERNAME=''
+WEBSERVER="apache"
 SILENT_INSTALL=false
+RUNNING_ON_PI=true
+FORCE_RASPBERRY_PI=false
 DATE=$(date +"%Y%m%d-%H-%M")
 IPADDRESS=$(hostname -I | cut -d " " -f 1)
 
@@ -26,68 +26,6 @@ NEEDED_NODE_VERSION="v12.22.(4 or newer)"
 NODEJS_NEEDS_UPDATE=false
 NODEJS_CHECKED=false
 
-if [ ! -z $1 ]; then
-    WEBSERVER=$1
-else
-    WEBSERVER=apache
-fi
-
-function info {
-    echo -e "\033[0;36m${1}\033[0m"
-}
-
-function error {
-    echo -e "\033[0;31m${1}\033[0m"
-}
-
-if [ "silent" = "$2" ]; then
-    SILENT_INSTALL=true
-    info "Performing silent install"
-fi
-
-
-print_spaces() {
-    echo ""
-    info "###########################################################"
-    echo ""
-}
-
-#Param 1: Question / Param 2: Default / silent answer
-function ask_yes_no {
-    if [ "$SILENT_INSTALL" = false ]; then
-        read -p "${1}: " -n 1 -r
-    else
-        REPLY=${2}
-    fi
-}
-
-function no_raspberry {
-    info "WARNING: This script is intended to run on a Raspberry Pi."
-    info "Running the script on other devices running Debian / a Debian based distribution is possible, but PI specific features will be missing!"
-    ask_yes_no "Do you want to continue? (y/n)" "Y"
-    if [[ $REPLY =~ ^[Yy]$ ]]
-    then
-        RUNNING_ON_PI=false
-        return
-    fi
-    exit ${1}
-}
-
-if [ $UID != 0 ]; then
-    error "ERROR: Only root is allowed to execute the installer. Forgot sudo?"
-    exit 1
-fi
-
-if [ ! -f /proc/device-tree/model ]; then
-    no_raspberry 2
-else
-    PI_MODEL=$(tr -d '\0' </proc/device-tree/model)
-
-    if [[ $PI_MODEL != Raspberry* ]]; then
-        no_raspberry 3
-    fi
-fi
-
 COMMON_PACKAGES=(
     'curl'
     'gphoto2'
@@ -98,6 +36,24 @@ COMMON_PACKAGES=(
     'rsync'
     'udisks2'
 )
+
+function info {
+    echo -e "\033[0;36m${1}\033[0m"
+}
+
+function warn {
+    echo -e "\033[0;33m${1}\033[0m"
+}
+
+function error {
+    echo -e "\033[0;31m${1}\033[0m"
+}
+
+print_spaces() {
+    echo ""
+    info "###########################################################"
+    echo ""
+}
 
 print_logo() {
 echo "
@@ -130,6 +86,121 @@ echo "
 "
 }
 
+#Param 1: Question / Param 2: Default / silent answer
+function ask_yes_no {
+    if [ "$SILENT_INSTALL" = false ]; then
+        read -p "${1}: " -n 1 -r
+    else
+        REPLY=${2}
+    fi
+}
+
+function no_raspberry {
+    warn "WARNING: This script is intended to run on a Raspberry Pi."
+    warn "Running the script on other devices running Debian / a Debian based distribution is possible, but Raspberry Pi specific features will be missing!"
+    RUNNING_ON_PI=false
+    print_spaces
+}
+
+view_help() {
+    cat << EOF
+Usage: sudo bash install-raspbian.sh -u [-bhrsVw]
+
+    -b,  -branch,     --branch      Enter the Photobooth branch (version) you like to install.
+                                    Available branches: stable3 , dev, package
+                                    By default, latest development verison (dev) will be installed.
+                                    package will install latest Release from zip.
+
+    -h,  -help,       --help        Display help.
+
+    -r,  -raspberry,  --raspberry   Skip Pi detection and add Pi specific adjustments.
+                                    Note: only to use on Raspberry Pi OS!
+
+    -s,  -silent,     --silent      Run silent installation.
+    
+    -u,  -username,   --username    Enter your OS username you like to use Photobooth
+                                    on (Raspberry Pi only)
+
+    -V,  -verbose,    --verbose     Run script in verbose mode.
+
+    -w,  -webserver,  --webserver   Enter the webserver to use [apache, nginx, lighttpd].
+                                    Apache is used by default.
+EOF
+}
+
+print_logo
+print_spaces
+info "### The Photobooth installer for your Raspberry Pi."
+print_spaces
+info "################## Passed options #########################"
+echo ""
+options=$(getopt -l "help,branch::,username::,raspberry,silent,verbose,webserver::" -o "b::hu::rsVw::" -a -- "$@")
+eval set -- "$options"
+
+while true
+do
+    case $1 in
+        -b|--branch)
+            shift
+            if [ "$1" == "dev" ] || [ "$1" == "stable3" ]; then
+                BRANCH=$1
+            elif [ "$1" == "package" ]; then
+                BRANCH="stable3"
+                GIT_INSTALL=false
+                NEEDS_NODEJS_CHECK=false
+                COMMON_PACKAGES+=('jq')
+            else
+                BRANCH="dev"
+                warn "[WARN]      Invalid branch / version!"
+                warn "[WARN]      Falling back to defaults. Installing latest development branch from git."
+            fi
+            info "### Photobooth version / branch:  $1"
+            ;;
+        -h|--help)
+            view_help
+            exit 0
+            ;;
+        -u|--username)
+            shift
+            USERNAME=$1
+            info "### Username: $1"
+            ;;
+        -s|--silent)
+            SILENT_INSTALL=true
+            info "### Silent installtion starting..."
+            ;;
+        -r|--raspberry)
+            FORCE_RASPBERRY_PI=true
+            info "### Skipping Pi detection and add specific adjustments..."
+            ;;
+        -V|--verbose)
+            set -xv
+            info "### Set xtrace and verbose mode."
+            ;;
+        -w|--webserver)
+            shift
+            WEBSERVER=$1
+            info "### Webserver: $1"
+            ;;
+        --)
+        shift
+        break;;
+    esac
+    shift
+done
+print_spaces
+
+check_username() {
+    info "[Info]      Checking if user $USERNAME exists..."
+    if id "$USERNAME" &>/dev/null; then
+        info "[Info]      User $USERNAME found. Installation process continues."
+    else
+        error "ERROR: An valid OS username is needed! Please re-run the installer."
+        view_help
+        exit
+    fi
+}
+
 check_nodejs() {
     NODE_VERSION=$(node -v || echo "0")
     IFS=. VER=(${NODE_VERSION##*v})
@@ -142,8 +213,8 @@ check_nodejs() {
             if [[ -n "$micro" && "$micro" -ge "4" ]]; then
                 info "[Info]      Node.js matches our requirements!"
             elif [[ -n "$micro" ]]; then
-                error "[WARN]      Node.js needs to be updated, micro version not matching our requirements!"
-                error "[WARN]      Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
+                warn "[WARN]      Node.js needs to be updated, micro version not matching our requirements!"
+                warn "[WARN]      Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
                 NODEJS_NEEDS_UPDATE=true
                 if [ "$NODEJS_CHECKED" = true ]; then
                     error "[ERROR]     Update was not possible. Aborting Photobooth installation!"
@@ -156,8 +227,8 @@ check_nodejs() {
                 exit 1
             fi
         elif [[ -n "$minor" ]]; then
-            error "[WARN]      Node.js needs to be updated, minor version not matching our requirements!"
-            error "[WARN]      Found Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
+            warn "[WARN]      Node.js needs to be updated, minor version not matching our requirements!"
+            warn "[WARN]      Found Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
             NODEJS_NEEDS_UPDATE=true
             if [ "$NODEJS_CHECKED" = true ]; then
                 error "[ERROR]     Update was not possible. Aborting Photobooth installation!"
@@ -170,8 +241,8 @@ check_nodejs() {
             exit 1
         fi
     elif [[ -n "$major" ]]; then
-        error "[WARN]      Node.js needs to be updated, major version not matching our requirements!"
-        error "[WARN]      Found Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
+        warn "[WARN]      Node.js needs to be updated, major version not matching our requirements!"
+        warn "[WARN]      Found Node.js $NODE_VERSION, but $NEEDED_NODE_VERSION is needed!"
         if [ "$NODEJS_CHECKED" = true ]; then
             error "[ERROR]     Update was not possible. Aborting Photobooth installation!"
             exit 1
@@ -223,7 +294,14 @@ common_software() {
     else
         apache_webserver
     fi
-
+    
+    if [ $GIT_INSTALL = true ]; then
+        COMMON_PACKAGES+=(
+            'git'
+            'yarn'
+        )
+    fi
+    
     info "### Installing common software..."
     for package in "${COMMON_PACKAGES[@]}"; do
         if [ $(dpkg-query -W -f='${Status}' ${package} 2>/dev/null | grep -c "ok installed") -eq 1 ]; then
@@ -346,7 +424,7 @@ start_install() {
         git clone https://github.com/andi34/photobooth $INSTALLFOLDER
         cd $INSTALLFOLDERPATH
 
-        info "### We are installing last development version via git."
+        info "### We are installing Photobooth via git."
         git fetch origin $BRANCH
         git checkout origin/$BRANCH
 
@@ -436,15 +514,15 @@ EOF
         if [ "$USB_SYNC" = true ]; then
             info "### Disabling automount for pi user"
 
-            mkdir -p /home/pi/.config/pcmanfm/LXDE-pi/
-            cat >> /home/pi/.config/pcmanfm/LXDE-pi/pcmanfm.conf <<EOF
+            mkdir -p /home/$USERNAME/.config/pcmanfm/LXDE-pi/
+            cat >> /home/$USERNAME/.config/pcmanfm/LXDE-pi/pcmanfm.conf <<EOF
 [volume]
 mount_on_startup=0
 mount_removable=0
 autorun=0
 EOF
 
-            chown -R pi:pi /home/pi/.config/pcmanfm
+            chown -R $USERNAME:$USERNAME /home/$USERNAME/.config/pcmanfm
 
             info "### Adding polkit rule so www-data can (un)mount drives"
 
@@ -463,7 +541,11 @@ EOF
 kioskbooth_desktop() {
     info "### We are installing Photobooth in Kiosk Mode for"
     info "### Raspberry Pi OS with desktop / Raspberry Pi OS with desktop and recommended software"
+
+    sed -i '/Photobooth/,/Photobooth End/d' /etc/xdg/lxsession/LXDE-pi/autostart
+
 cat >> /etc/xdg/lxsession/LXDE-pi/autostart <<EOF
+# Photobooth
 # turn off display power management system
 @xset -dpms
 # turn off screen blanking
@@ -476,6 +558,7 @@ cat >> /etc/xdg/lxsession/LXDE-pi/autostart <<EOF
 
 # Hide mousecursor
 @unclutter -idle 3
+# Photobooth End
 
 EOF
 }
@@ -493,52 +576,43 @@ cups_setup() {
 
 ############################################################
 #                                                          #
+# General checks before the installation process can start #
+#                                                          #
+############################################################
+
+if [ $UID != 0 ]; then
+    error "ERROR: Only root is allowed to execute the installer. Forgot sudo?"
+    exit 1
+fi
+
+if [ "$FORCE_RASPBERRY_PI" = false ]; then
+    if [ ! -f /proc/device-tree/model ]; then
+        no_raspberry 2
+    else
+        PI_MODEL=$(tr -d '\0' </proc/device-tree/model)
+
+        if [[ $PI_MODEL != Raspberry* ]]; then
+            no_raspberry 3
+        fi
+    fi
+fi
+
+############################################################
+#                                                          #
 # Ask all questions before installing Photobooth           #
 #                                                          #
 ############################################################
 
-print_logo
-
-info "### The Photobooth installer for your Raspberry Pi."
-
-echo -e "\033[0;33m### Choose your Photobooth version."
-echo -e "    Note: Installation via git will take more time"
-echo -e "    and is recommended for brave users."
-echo -e "    "
-echo -e "    Versions available: "
-echo -e "    1 Install latest stable Release (git)"
-echo -e "    2 Install latest development version (git)"
-echo -e "    3 Install latest stable Release (package)"
-ask_yes_no "Please enter your choice" "1"
-echo -e "\033[0m"
-if [[ $REPLY =~ ^[1]$ ]]; then
-    info "### We are installing last stable Release via git."
-    BRANCH="stable3"
-    GIT_INSTALL=true
-    COMMON_PACKAGES+=(
-        'git'
-        'yarn'
-    )
-elif [[ $REPLY =~ ^[2]$ ]]; then
-    info "### We are installing last development version via git."
-    BRANCH="dev"
-    GIT_INSTALL=true
-    COMMON_PACKAGES+=(
-        'git'
-        'yarn'
-    )
-else
-    if [[ ! $REPLY =~ ^[3]$ ]]; then
-        info "### Invalid choice!"
+if [ "$RUNNING_ON_PI" = true ]; then
+    if [ ! -z $USERNAME ]; then
+        check_username
+    else
+        error "ERROR: An valid OS username is needed! Please re-run the installer."
+        view_help
+        exit
     fi
-    info "### We are installing latest stable Release from package."
-    BRANCH="stable3"
-    GIT_INSTALL=false
-    NEEDS_NODEJS_CHECK=false
-    COMMON_PACKAGES+=('jq')
+    print_spaces
 fi
-
-print_spaces
 
 echo -e "\033[0;33m### Is Photobooth the only website on this system?"
 echo -e "### NOTE: If typing y, the whole /var/www/html folder will be renamed"
