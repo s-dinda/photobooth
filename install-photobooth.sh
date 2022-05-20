@@ -104,7 +104,7 @@ function no_raspberry {
 
 view_help() {
     cat << EOF
-Usage: sudo bash install-raspbian.sh -u [-bhrsVw]
+Usage: sudo bash install-photobooth.sh -u [-bhrsVw]
 
     -b,  -branch,     --branch      Enter the Photobooth branch (version) you like to install.
                                     Available branches: stable3 , dev, package
@@ -522,7 +522,7 @@ mount_removable=0
 autorun=0
 EOF
 
-            chown -R $USERNAME:$USERNAME /home/$USERNAME/.config/pcmanfm
+            chown -R $USERNAME:$USERNAME /home/$USERNAME/.config
 
             info "### Adding polkit rule so www-data can (un)mount drives"
 
