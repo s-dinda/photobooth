@@ -14,11 +14,11 @@ define('COLLAGE_FRAME', $config['collage']['frame']);
 define('COLLAGE_TAKE_FRAME', $config['collage']['take_frame']);
 define('COLLAGE_PLACEHOLDER', $config['collage']['placeholder']);
 // If a placeholder is set, decrease the value by 1 in order to reflect array counting at 0
-define('COLLAGE_PLACEHOLDER_POSITION', (int)$config['collage']['placeholderposition'] - 1);
+define('COLLAGE_PLACEHOLDER_POSITION', (int) $config['collage']['placeholderposition'] - 1);
 define('COLLAGE_PLACEHOLDER_PATH', $config['collage']['placeholderpath']);
 define('COLLAGE_DASHEDLINE_COLOR', $config['collage']['dashedline_color']);
 // If a placholder image should be used, we need to increase the limit here in order to count the images correct
-define('COLLAGE_LIMIT', $config['collage']['placeholder'] ?  $config['collage']['limit'] + 1 : $config['collage']['limit']);
+define('COLLAGE_LIMIT', $config['collage']['placeholder'] ? $config['collage']['limit'] + 1 : $config['collage']['limit']);
 define('PICTURE_FLIP', $config['picture']['flip']);
 define('PICTURE_ROTATION', $config['picture']['rotation']);
 define('PICTURE_POLAROID_EFFECT', $config['picture']['polaroid_effect'] === true ? 'enabled' : 'disabled');
@@ -82,7 +82,6 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             copy($srcImagePaths[$i - $placeholderOffset], $editfilename);
             $editImages[] = $editfilename;
         }
-        
     }
 
     for ($i = 0; $i < COLLAGE_LIMIT; $i++) {
@@ -156,10 +155,10 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
         case '2+2':
             // Set Picture Options (Start X, Start Y, Width, Height, Rotation Angle) for each picture
             $pictureOptions = [
-                [0, 0, $collage_width / 2, $collage_height / 2, 0], 
-                [$collage_width / 2, 0, $collage_width / 2, $collage_height / 2, 0], 
-                [0, $collage_height / 2, $collage_width / 2, $collage_height / 2, 0], 
-                [$collage_width / 2, $collage_height / 2, $collage_width / 2, $collage_height / 2, 0]
+                [0, 0, $collage_width / 2, $collage_height / 2, 0],
+                [$collage_width / 2, 0, $collage_width / 2, $collage_height / 2, 0],
+                [0, $collage_height / 2, $collage_width / 2, $collage_height / 2, 0],
+                [$collage_width / 2, $collage_height / 2, $collage_width / 2, $collage_height / 2, 0],
             ];
 
             for ($i = 0; $i < COLLAGE_LIMIT; $i++) {
@@ -171,22 +170,22 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
         case '2+2-2':
             $heightRatio = 0.4; // 0.4 = image height ratio. Should be set below 0.5 (as we have 2 pictures). Please adapt the short/long ratio as well
             $shortRatio = 0.08; // shortRatio, distance until the top left corner of the first image
-            $longRatio = 0.52; // longRatio = image height ratio + shortRatio + distance between the images. In this case: 0.4 + 0.08 + 0.04 = 0.52. 
+            $longRatio = 0.52; // longRatio = image height ratio + shortRatio + distance between the images. In this case: 0.4 + 0.08 + 0.04 = 0.52.
             // Distance between pictures = 2x (0.5 -heightRatio -shortRatio)
             // Please note: We get a correct picture, if this formula adds up to exactly 1:  2x heightRatio + 2x shortRatio + distance between pictures
-            
-            $heightp = $collage_height * $heightRatio; 
+
+            $heightp = $collage_height * $heightRatio;
             $widthp = $heightp * 1.5;
-            
+
             //If there is a need for Text/Frame, we could specify an additional horizontal offset. E.g. widthp * 0.08
             $horizontalOffset = $widthp * 0;
-            
+
             // Set Picture Options (Start X, Start Y, Width, Height, Rotation Angle) for each picture
             $pictureOptions = [
-                [$collage_width * $shortRatio + $horizontalOffset, $collage_height * $shortRatio, $widthp, $heightp, 0], 
-                [$collage_width * $longRatio + $horizontalOffset, $collage_height * $shortRatio, $widthp, $heightp, 0], 
-                [$collage_width * $shortRatio + $horizontalOffset, $collage_height * $longRatio, $widthp, $heightp, 0], 
-                [$collage_width * $longRatio + $horizontalOffset, $collage_height * $longRatio, $widthp, $heightp, 0]
+                [$collage_width * $shortRatio + $horizontalOffset, $collage_height * $shortRatio, $widthp, $heightp, 0],
+                [$collage_width * $longRatio + $horizontalOffset, $collage_height * $shortRatio, $widthp, $heightp, 0],
+                [$collage_width * $shortRatio + $horizontalOffset, $collage_height * $longRatio, $widthp, $heightp, 0],
+                [$collage_width * $longRatio + $horizontalOffset, $collage_height * $longRatio, $widthp, $heightp, 0],
             ];
 
             for ($i = 0; $i < COLLAGE_LIMIT; $i++) {
@@ -202,7 +201,7 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             // Vertical Positions for big and small images
             $shortRatioY = 0.08; // shortRatioY, vertical distance until the top left corner of the image
             $longRatioY = 0.6178; // longRatio = heightRatioBig + shortRatioY + distance between the images.
-            // Vertical distance between pictures in this case  = 0.5 x shortRatioY. 
+            // Vertical distance between pictures in this case  = 0.5 x shortRatioY.
 
             // Horizontal Positions for small images
             $shortRatioX = 0.0281; // shortRatioX, horizontal width ratio distance to the left picture
@@ -241,12 +240,12 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
                 // Vertical Positions for big and small images
                 $shortRatioY = 0.08; // shortRatioY, vertical distance until the top left corner of the image
                 $longRatioY = 0.6178; // longRatio = heightRatioBig + shortRatioY + distance between the images.
-                // Vertical distance between pictures in this case  = 0.5 x shortRatioY. 
+                // Vertical distance between pictures in this case  = 0.5 x shortRatioY.
             } else {
                 // Switch vertical Positions for big and small images
                 $shortRatioY = 0.4252; // shortRatioY,  = heightRatioSmall + shortRatioY + distance between the images.
                 $longRatioY = 0.08; // longRatio = vertical distance until the top left corner of the image
-                // Vertical distance between pictures in this case  = 0.5 x shortRatioY. 
+                // Vertical distance between pictures in this case  = 0.5 x shortRatioY.
             }
 
             // Horizontal Positions for small images
@@ -264,7 +263,6 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             $heightNewSmall = $collage_height * $heightRatioSmall;
             $widthNewSmall = $heightNewSmall * 1.5;
 
-
             $pictureOptions = [
                 [$collage_width * $ratioBigPictureX, $collage_height * $shortRatioY, $widthNewBig, $heightNewBig, 0],
                 [$collage_width * $shortRatioX, $collage_height * $longRatioY, $widthNewSmall, $heightNewSmall, 0],
@@ -279,7 +277,7 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             break;
         case '1+2':
             //Specify Big/Small Height Ratios - values based on previos settings
-            $heightRatioBig = 0.55546; // based on previous value / height 
+            $heightRatioBig = 0.55546; // based on previous value / height
             $heightRatioSmall = 0.40812;
 
             $shortRatioY = 0.055;
@@ -293,9 +291,9 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             $widthNewSmall = $heightNewSmall * 1.5;
 
             $pictureOptions = [
-                [0, $collage_height * $shortRatioY, $widthNewBig, $heightNewBig, 10], 
-                [$collage_width * $longRatioX, $collage_height * $shortRatioY, $widthNewSmall, $heightNewSmall, 0], 
-                [$collage_width * $longRatioX, $collage_height * $longRatioY, $widthNewSmall, $heightNewSmall, 0]
+                [0, $collage_height * $shortRatioY, $widthNewBig, $heightNewBig, 10],
+                [$collage_width * $longRatioX, $collage_height * $shortRatioY, $widthNewSmall, $heightNewSmall, 0],
+                [$collage_width * $longRatioX, $collage_height * $longRatioY, $widthNewSmall, $heightNewSmall, 0],
             ];
 
             for ($i = 0; $i < 3; $i++) {
@@ -303,7 +301,7 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             }
 
             break;
-        case '2+1': 
+        case '2+1':
             $heightRatio = 0.375;
 
             // Horizontal Ratio
@@ -314,14 +312,13 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
             $shortRatioX = 0.1;
             $longRatioX = 0.525;
 
-            
             $heightNew = $collage_height * $heightRatio;
             $widthNew = $heightNew * 1.5;
-            
+
             $pictureOptions = [
-                [$collage_width * $shortRatioY, $collage_height * $shortRatioX, $widthNew, $heightNew, 0], 
-                [$collage_width * $longRatioY, $collage_height * $shortRatioX, $widthNew, $heightNew, 0], 
-                [$collage_width * $shortRatioY, $collage_height * $longRatioX, $widthNew, $heightNew, 0]
+                [$collage_width * $shortRatioY, $collage_height * $shortRatioX, $widthNew, $heightNew, 0],
+                [$collage_width * $longRatioY, $collage_height * $shortRatioX, $widthNew, $heightNew, 0],
+                [$collage_width * $shortRatioY, $collage_height * $longRatioX, $widthNew, $heightNew, 0],
             ];
 
             for ($i = 0; $i < 3; $i++) {
@@ -400,7 +397,7 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
                 $longRatioY = 0.54333;
 
                 $img1RatioX = 0.03556;
-                $img2RatioX = 0.2350;
+                $img2RatioX = 0.235;
                 $img3RatioX = 0.43611;
                 $img4RatioX = 0.63667;
             } else {
@@ -415,7 +412,7 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
                 $img3RatioX = 0.51048;
                 $img4RatioX = 0.74475;
             }
-            
+
             $pictureOptions = [
                 [$collage_width * $img1RatioX, $collage_height * $shortRatioY, $widthNew, $heightNew, 90],
                 [$collage_width * $img2RatioX, $collage_height * $shortRatioY, $widthNew, $heightNew, 90],
@@ -500,7 +497,6 @@ function createCollage($srcImagePaths, $destImagePath, $filter = 'plain') {
     // Destroy the created collage in memory
     imagedestroy($my_collage);
 
-    
     for ($i = 0; $i < COLLAGE_LIMIT; $i++) {
         if (!COLLAGE_PLACEHOLDER || (COLLAGE_PLACEHOLDER && COLLAGE_PLACEHOLDER_POSITION != $i)) {
             unlink($editImages[$i]);
