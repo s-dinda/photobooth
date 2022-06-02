@@ -3,7 +3,7 @@
   height: 5em;
   border-radius: 50%;
   border: 2px solid $borderColor;
-  background: radial-gradient(grey, $mainColor, $hoverColor);
+  background: radial-gradient($highlightColor, $mainColor, $hoverColor);
   display: inline-block;
   color: $buttonFontColor;
   text-decoration: none;
@@ -21,7 +21,7 @@
     background: $hoverColor;
   }
   .fa {
-    font-size: 1.5em;
+    font-size: 2em;
     margin: 0;
     position: absolute;
     top: 50%;
